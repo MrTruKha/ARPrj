@@ -1,0 +1,21 @@
+﻿using System.Reflection;
+using Autofac;
+using Module = Autofac.Module;
+namespace PAS.Web.Framework.Dependency
+{
+    public class ServiceModule : Module
+    {
+        protected override void Load(ContainerBuilder builder)
+        {
+            builder.RegisterAssemblyTypes(Assembly.Load("ARPrj.Services"))
+                      .Where(t => t.Name.EndsWith("Service"))
+                      .AsImplementedInterfaces()
+                      .InstancePerLifetimeScope();
+
+            builder.RegisterAssemblyTypes(Assembly.Load("ARPrj.Services"))    
+                     .Where(t => t.Name.EndsWith("Provider"))
+                     .AsImplementedInterfaces()
+                     .InstancePerLifetimeScope();
+        }
+    }
+}

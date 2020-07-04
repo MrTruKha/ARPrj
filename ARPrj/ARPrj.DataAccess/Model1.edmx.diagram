@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fbbc5a8192c4446a98dafdd3c85b3e3c" Name="Diagram1" ZoomLevel="88">
+        <EntityTypeShape EntityType="ARPrjModel.Airline" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARPrjModel.AirlinesTicketsType" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARPrjModel.Flight" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARPrjModel.InformationFlight" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARPrjModel.Order" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARPrjModel.OrderDetail" Width="1.5" PointX="7.5" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARPrjModel.Promotion" Width="1.5" PointX="7.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARPrjModel.Role" Width="1.5" PointX="3" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARPrjModel.sysdiagram" Width="1.5" PointX="9.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARPrjModel.TicketsType" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARPrjModel.User" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARPrjModel.UsersRole" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="ARPrjModel.FK__AirlinesT__Airli__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="ARPrjModel.FK__Flights__Airline__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="ARPrjModel.FK__AirlinesT__Ticke__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="ARPrjModel.FK__Flights__Informa__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="ARPrjModel.FK__OrderDeta__Fligh__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="ARPrjModel.FK__Informati__Ticke__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="ARPrjModel.FK__Order__CustomerI__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="ARPrjModel.FK__OrderDeta__Order__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="ARPrjModel.FK__OrderDeta__Ticke__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="ARPrjModel.FK__UsersRole__RoleI__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="ARPrjModel.FK__UsersRole__UserI__4BAC3F29" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
