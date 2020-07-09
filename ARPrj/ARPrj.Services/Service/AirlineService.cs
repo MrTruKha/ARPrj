@@ -15,6 +15,7 @@ namespace ARPrj.Services.Service
     {
         List<AirlineModel> GetAirlines();
         void CreateAirline(AirlineModel model);
+        void DeleteAirline(AirlineModel model);
     }
     class AirlineService :EntityService<Airline>, IAirlineService
     {
@@ -27,6 +28,11 @@ namespace ARPrj.Services.Service
         public void CreateAirline(AirlineModel model)
         {
             Insert(model.MapToEntity());
+        }
+
+        public void DeleteAirline(AirlineModel model)
+        {
+            Delete(model.AirlineId);
         }
 
         public List<AirlineModel> GetAirlines()

@@ -32,5 +32,18 @@ namespace ARPrj.WebManagement.Controllers
             _airlineService.CreateAirline(model);
             return RedirectToAction("Index");
         }
+        public ActionResult Delete(int id)
+        {
+            var model = _airlineService.GetAirlines().FirstOrDefault(x => x.AirlineId == id);
+            return View(model);
+        }
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteAirline(int? id)
+        {
+            var model = _airlineService.GetAirlines().FirstOrDefault(x => x.AirlineId == id);
+            _airlineService.DeleteAirline(model);
+            return RedirectToAction("Index");
+        }
+
     }
 }

@@ -54,10 +54,10 @@
       <HintPath>..\packages\Autofac.Mvc5.5.0.0\lib\net461\Autofac.Integration.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -171,7 +171,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AirlineController.cs" />
+    <Compile Include="Controllers\AirlinesTicketsTypesController.cs" />
+    <Compile Include="Controllers\FlightsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InformationFlightsController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\TicketsTypesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -3580,6 +3585,32 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Airline\Index.cshtml" />
     <Content Include="Views\Airline\Create.cshtml" />
+    <Content Include="Views\Flights\Create.cshtml" />
+    <Content Include="Views\Flights\Delete.cshtml" />
+    <Content Include="Views\Flights\Details.cshtml" />
+    <Content Include="Views\Flights\Edit.cshtml" />
+    <Content Include="Views\Flights\Index.cshtml" />
+    <Content Include="Views\InformationFlights\Create.cshtml" />
+    <Content Include="Views\InformationFlights\Delete.cshtml" />
+    <Content Include="Views\InformationFlights\Details.cshtml" />
+    <Content Include="Views\InformationFlights\Edit.cshtml" />
+    <Content Include="Views\InformationFlights\Index.cshtml" />
+    <Content Include="Views\AirlinesTicketsTypes\Create.cshtml" />
+    <Content Include="Views\AirlinesTicketsTypes\Delete.cshtml" />
+    <Content Include="Views\AirlinesTicketsTypes\Details.cshtml" />
+    <Content Include="Views\AirlinesTicketsTypes\Edit.cshtml" />
+    <Content Include="Views\AirlinesTicketsTypes\Index.cshtml" />
+    <Content Include="Views\TicketsTypes\Create.cshtml" />
+    <Content Include="Views\TicketsTypes\Delete.cshtml" />
+    <Content Include="Views\TicketsTypes\Details.cshtml" />
+    <Content Include="Views\TicketsTypes\Edit.cshtml" />
+    <Content Include="Views\TicketsTypes\Index.cshtml" />
+    <Content Include="Views\Orders\Create.cshtml" />
+    <Content Include="Views\Orders\Delete.cshtml" />
+    <Content Include="Views\Orders\Details.cshtml" />
+    <Content Include="Views\Orders\Edit.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\Airline\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
