@@ -15,5 +15,6 @@ namespace ARPrj.Model.Models.User
         public DateTime? CreateDate { get; set; }
         public DateTime? UpdateDate { get; set; }
         public bool? IsActive { get; set; }
+        public string RoleName { get; set; }
     }
 }

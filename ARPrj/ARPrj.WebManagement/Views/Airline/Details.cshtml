@@ -1,0 +1,50 @@
+﻿@model ARPrj.Model.Models.AirLine.AirlineModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Airline</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AirlineName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AirlineName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NetPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NetPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UpdateDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AirlineId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

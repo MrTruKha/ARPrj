@@ -3,7 +3,7 @@ using System;
 using System.Data.Entity.Validation;
 using System.Text;
 
-namespace PAS.DataAccess.Common
+namespace ARPrj.DataAccess.Common
 {
     public class FormattedDbEntityValidationException : Exception
     {

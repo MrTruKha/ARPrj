@@ -1,13 +1,13 @@
-﻿using PAS.DataAccess.Common;
-using log4net;
+﻿using log4net;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Linq;
 using System.Web;
+using ARPrj.DataAccess.Common;
 
-namespace PAS.Services
+namespace ARPrj.Service
 {
     public interface IEntityService<T> where T : class, new()
     {

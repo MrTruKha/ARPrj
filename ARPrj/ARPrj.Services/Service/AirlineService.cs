@@ -1,8 +1,8 @@
 ﻿using ARPrj.DataAccess;
+using ARPrj.DataAccess.Common;
 using ARPrj.DataAccess.Repositories;
 using ARPrj.Model.Models.AirLine;
-using PAS.DataAccess.Common;
-using PAS.Services;
+using ARPrj.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,8 +16,9 @@ namespace ARPrj.Services.Service
         List<AirlineModel> GetAirlines();
         void CreateAirline(AirlineModel model);
         void DeleteAirline(AirlineModel model);
+        void EditAirline(AirlineModel model);
     }
-    class AirlineService :EntityService<Airline>, IAirlineService
+    public class AirlineService :EntityService<Airline>, IAirlineService
     {
         private readonly IAirlineRepository _airlineRepository;
         public AirlineService(IAirlineRepository airlineRepository, IUnitOfWork unitOfWork) : base(unitOfWork, airlineRepository)
@@ -33,6 +34,20 @@ namespace ARPrj.Services.Service
         public void DeleteAirline(AirlineModel model)
         {
             Delete(model.AirlineId);
+            UnitOfWork.SaveChanges();
+        }
+
+        public void EditAirline(AirlineModel model)
+        {
+            var airLineEntity = _airlineRepository.FindAll(x => x.AirlineId == model.AirlineId).FirstOrDefault();
+            if (airLineEntity != null)
+            {
+                airLineEntity.AirlineName = model.AirlineName;
+                airLineEntity.CreateDate = model.CreateDate;
+                airLineEntity.UpdateDate = model.UpdateDate;
+                airLineEntity.NetPrice = model.NetPrice;
+            }
+            Update(airLineEntity);          
         }
 
         public List<AirlineModel> GetAirlines()

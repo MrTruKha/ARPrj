@@ -1,6 +1,10 @@
-namespace ARPrj.DataAccess.Migrations
+﻿namespace ARPrj.DataAccess.Migrations
 {
+    using ARPrj.DataAccess.Model;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -18,6 +22,53 @@ namespace ARPrj.DataAccess.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
+            CreateRoleSample(context);
+            CreateUserSample(context);
+        }
+        private void CreateRoleSample(ARPrj.DataAccess.ARPrjContext context)
+        {
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            if (roleManager.Roles.Count() == 0)
+            {
+
+                var list = new List<IdentityRole>()
+                {
+                    new IdentityRole() {Name = "Admin"},
+                    new IdentityRole() {Name = "Staff"},
+                    new IdentityRole() {Name = "Customer"}
+                };
+                foreach (var VARIABLE in list)
+                {
+                    roleManager.Create(VARIABLE);
+                }
+            }
+        }
+        private void CreateUserSample(ARPrjContext context)
+        {
+            var userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(context));
+            if (context.Users.Count() == 0)
+            {
+                List<UserCommon> listUser = new List<UserCommon>()
+                        {
+                            new UserCommon(){UserName="Admin",FullName="Vũ Quang Trường",PasswordHash= "666888",Email="truongvq2@gmail.com"}                   
+                        };
+                foreach (var item in listUser)
+                {
+                    userManager.Create(item, item.PasswordHash);
+                    if (item.UserName.Equals("Admin"))
+                    {
+                        userManager.AddToRole(item.Id, "Admin");
+                    }
+                    if (item.UserName.Contains("ProjectManager"))
+                    {
+                        userManager.AddToRole(item.Id, "ProjectManager");
+                    }
+                    if (item.UserName.Contains("Member"))
+                    {
+                        userManager.AddToRole(item.Id, "Member");
+                    }
+                }
+            }
         }
     }
 }

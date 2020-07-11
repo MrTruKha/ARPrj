@@ -8,9 +8,9 @@ using Owin;
 using ARPrj.DataAccess;
 using ARPrj.DataAccess.Model;
 
-[assembly: OwinStartup("Demo",typeof(PMS.Web.App_Start.Startup))]
+[assembly: OwinStartup("Demo",typeof(ARPrj.WebManagement.App_Start.Startup))]
 
-namespace PMS.Web.App_Start
+namespace ARPrj.WebManagement.App_Start
 {
     public class Startup
     {
@@ -67,5 +67,6 @@ namespace PMS.Web.App_Start
             //    ClientSecret = ""
             //});
         }
+
     }
 }

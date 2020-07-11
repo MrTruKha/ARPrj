@@ -13,7 +13,7 @@ using ARPrj.DataAccess;
 using ARPrj.DataAccess.Model;
 using UserCommon = ARPrj.DataAccess.Model.UserCommon;
 
-namespace PMS.Web.App_Start
+namespace ARPrj.WebManagement.App_Start
 {
     public class EmailService : IIdentityMessageService
     {

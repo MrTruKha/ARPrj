@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using Autofac;
 using Module = Autofac.Module;
-namespace PAS.Web.Framework.Dependency
+namespace ARPrj.Web.Framework.Dependency
 {
     public class RepositoryModule : Module
     {

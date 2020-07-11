@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace PAS.DataAccess.Common
+namespace ARPrj.DataAccess.Common
 {
     public class SearchResponse<T>
     {

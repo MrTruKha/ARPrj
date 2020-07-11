@@ -6,7 +6,7 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using System.Transactions;
 
-namespace PAS.DataAccess.Common
+namespace ARPrj.DataAccess.Common
 {
     public class UnitOfWork : IUnitOfWork
     {

@@ -10,5 +10,6 @@ namespace ARPrj.Model.Models.Role
     {
         public int RoleId { get; set; }
         public int Role1 { get; set; }
+        public string RoleName { get; set; }
     }
 }

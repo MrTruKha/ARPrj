@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace PAS.DataAccess.Common
+namespace ARPrj.DataAccess.Common
 {
     public interface IBaseRepository<T> where T : class
     {

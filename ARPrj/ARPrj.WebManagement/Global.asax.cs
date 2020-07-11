@@ -1,7 +1,6 @@
 ﻿using ARPrj.Web.Framework.Dependency;
 using Autofac;
 using Autofac.Integration.Mvc;
-using PAS.Web.Framework.Dependency;
 using System.Reflection;
 using System.Web.Mvc;
 using System.Web.Optimization;

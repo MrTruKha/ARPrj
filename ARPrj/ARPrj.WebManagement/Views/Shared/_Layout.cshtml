@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -133,7 +134,7 @@
                     <div class="text-center mx-4">
                         <a class="dh " href="/Client/TraCuuDH">
                             <div style="text-decoration: none;">
-                                Tra cứu đơn
+                                @HttpContext.Current.User.Identity.GetUserName()
                             </div>
                         </a>
                     </div>

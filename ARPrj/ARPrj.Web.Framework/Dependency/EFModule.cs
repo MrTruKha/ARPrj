@@ -1,7 +1,6 @@
 ﻿using ARPrj.DataAccess;
+using ARPrj.DataAccess.Common;
 using Autofac;
-using PAS.DataAccess.Common;
-using PAS.Web.Framework.Dependency;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +16,7 @@ namespace ARPrj.Web.Framework.Dependency
             builder.RegisterModule(new RepositoryModule());           
 
             builder.RegisterType(typeof(ARPrjEntities)).InstancePerRequest();
+            builder.RegisterType(typeof(ARPrjContext)).InstancePerRequest();
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
         }
     }

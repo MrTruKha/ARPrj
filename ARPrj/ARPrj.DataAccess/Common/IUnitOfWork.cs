@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PAS.DataAccess.Common
+namespace ARPrj.DataAccess.Common
 {
     public interface IUnitOfWork : IDisposable
     {
