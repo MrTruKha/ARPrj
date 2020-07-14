@@ -1,49 +1,77 @@
-﻿@model ARPrj.WebManagement.Models.AccountView
-<!-- Login wrapper -->
-<div class="login-wrapper">
-    @using (Html.BeginForm("Login", "Account", FormMethod.Post))
-    {
-        @Html.AntiForgeryToken()
-        <div class="popup-header">
-            <a href="#" class="pull-left"><i class="icon-user-plus"></i></a>
-            <span class="text-semibold">User Login</span>
-            <div class="btn-group pull-right">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cogs"></i></a>
-                <ul class="dropdown-menu icons-right dropdown-menu-right"></ul>
-            </div>
-        </div>
-        <div class="well">
-            <div class="form-group has-feedback">
-                <label>Username</label>
-                @Html.TextBoxFor(model => Model.UserName, new { @class = "form-control", @placeholder = "Username" })
-                @Html.ValidationMessageFor(model => Model.UserName, "", new { @class = "text-danger" })
-                <i class="icon-users form-control-feedback"></i>
-            </div>
+﻿@{
+    Layout = "";
+}
+@model ARPrj.WebManagement.Models.AccountView
 
-            <div class="form-group has-feedback">
-                <label>Password</label>
-                @Html.EditorFor(model => Model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password" } })
-                @Html.ValidationMessageFor(model => Model.Password, "", new { @class = "text-danger" })
-                @Html.ValidationMessage("Error", new { @class = "text-danger" })
-                <i class="icon-lock form-control-feedback"></i>
-            </div>
-            <div class="row form-actions">
-                <div class="col-xs-6">
-                    <div class="checkbox checkbox-success">
-                        <label>
-                            <input type="checkbox" class="styled">
-                            Remember me
-                        </label>
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <!--Made with love by Mutiullah Samim -->
+    <!--Bootsrap 4 CDN-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!--Fontawesome CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <!--Custom styles-->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="~/Assets/client/css/login.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-center h-100">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Sign In</h3>
+                    <div class="d-flex justify-content-end social_icon">
+                        <span><i class="fab fa-facebook-square"></i></span>
+                        <span><i class="fab fa-google-plus-square"></i></span>
+                        <span><i class="fab fa-twitter-square"></i></span>
                     </div>
                 </div>
-
-                <div class="col-xs-6">
-                    <button type="submit" class="btn btn-warning pull-right"><i class="icon-menu2"></i>Sign in</button>
+                <div class="card-body">
+                    @Html.ValidationMessage("Error", new { @class = "text-danger" })
+                    @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            @Html.TextBoxFor(model => Model.UserName, new { @class = "form-control", @placeholder = "Username" })
+                        </div>
+                        @Html.ValidationMessageFor(model => Model.UserName, "", new { @class = "text-danger" })
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            @*<input type="password" class="form-control" placeholder="password">*@
+                            @Html.EditorFor(model => Model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password" } })
+                        </div>
+                        @Html.ValidationMessageFor(model => Model.Password, "", new { @class = "text-danger" })
+                        <div class="row align-items-center remember">
+                            <input type="checkbox">Remember Me
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Login" class="btn float-right login_btn">
+                        </div>
+                    }
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-center links">
+                        Don't have an account?<a href="#">Sign Up</a>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <a href="#">Forgot your password?</a>
+                    </div>
                 </div>
             </div>
         </div>
-
-    }
-
-</div>
-<!-- /login wrapper -->
+    </div>
+</body>
+</html>

@@ -1,5 +1,6 @@
 ﻿using ARPrj.Model.Models.AirLine;
 using ARPrj.Services.Service;
+using PMS.Web.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,8 @@ using System.Web.Mvc;
 
 namespace ARPrj.WebManagement.Controllers
 {
+    [Authorize]
+    [CustomAuthorize("Admin")]
     public class AirlineController : Controller
     {
         private readonly IAirlineService _airlineService;

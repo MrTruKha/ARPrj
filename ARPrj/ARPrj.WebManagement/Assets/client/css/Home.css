@@ -1,6 +1,6 @@
 *{
-	margin:0px;
-	padding:0px;
+	/* margin:0px; */
+	/* padding:0px; */
 }
 header{
 	
@@ -15,9 +15,6 @@ body{
 .menu{
 	background: #006F8F;
 }
-.nav-link{
-	border: 1px solid #006F8F ;
-}
 .nav-link:hover{
 	border-bottom: 1px solid #FFB200;
 	opacity: 0.5;
@@ -26,9 +23,7 @@ body{
 	border-bottom: 1px solid #FFB200;
 	opacity: 0.5;
 }
-.dh{
-color: white !important;
-}
+.dh{color: white !important;}
 .nav_link_active{
 	border-bottom: 1px solid #FFB200 !important;
 	color: #FFB200 !important;
@@ -73,4 +68,18 @@ color: white !important;
 .dropdown:hover .dropbtn {background-color: #006F8F;}
 footer{
 	background: #004562;
+}
+.sidebar {
+  background-color: #3ca2bb;
+  margin-top: 60px;
+}
+div#navbarSupportedContent {
+    background-color: #006F8F;
+    height: 60px !important;
+}
+.navbar-nav > li {
+    border-right: 0 !important;
+    border-left: 0 !important;
+    font-size: 12px;
+    display: inline-block;
 }

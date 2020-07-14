@@ -228,7 +228,11 @@
     <Compile Include="Security\CustomAuthorizeAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\admin\assets\css\bootstrap.min.css" />
+    <Content Include="Assets\admin\assets\css\icons.css" />
+    <Content Include="Assets\admin\assets\css\londinium-theme.css" />
     <Content Include="Assets\admin\assets\css\style.css" />
+    <Content Include="Assets\admin\assets\css\styles2.css" />
     <Content Include="Assets\admin\assets\js\dashboard.js" />
     <Content Include="Assets\admin\assets\js\index.html" />
     <Content Include="Assets\admin\assets\js\init-scripts\chart-js\chartjs-init.js" />
@@ -2233,6 +2237,7 @@
     <Content Include="Assets\admin\vendors\themify-icons\ie7\ie7.css" />
     <Content Include="Assets\admin\vendors\themify-icons\ie7\ie7.js" />
     <Content Include="Assets\client\css\Home.css" />
+    <Content Include="Assets\client\css\login.css" />
     <Content Include="Assets\client\css\SignIn.css" />
     <Content Include="Assets\client\image_icon\icon_kit\add%402x.png" />
     <Content Include="Assets\client\image_icon\icon_kit\add%403x.png" />
@@ -3659,6 +3664,7 @@
     <Content Include="Views\Airline\Edit.cshtml" />
     <Content Include="Views\Airline\Details.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

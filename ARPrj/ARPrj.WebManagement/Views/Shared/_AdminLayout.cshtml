@@ -1,0 +1,109 @@
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="~/Assets/client/js/jquery-3.3.1.min.js"></script>
+
+    <script src="~/Assets/client/js/angular.min.js"></script>
+    <script src="~/Assets/client/js/angular-sanitize.js"></script>
+    <script src="~/Assets/client/jsController/mainController.js"></script>
+
+
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>@ViewBag.Title</title>
+
+
+    <link href="@Url.Content("~/Assets/client/css/Home.css")" rel="stylesheet" />
+    <link rel="stylesheet" href="@Url.Content("https://use.fontawesome.com/releases/v5.8.1/css/all.css")" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="@Url.Content("~/bower_components/boostrap/dist/css/bootstrap.min.css")" rel="stylesheet" />
+    <link href="~/Assets/client/css/Home.css" rel="stylesheet" />
+    <link href="~/Assets/admin/assets/css/londinium-theme.css" rel="stylesheet" type="text/css">
+    <link href="~/Assets/admin/assets/css/styles2.css" rel="stylesheet" type="text/css">
+    <link href="~/Assets/admin/assets/css/icons.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="~/Assets/admin/vendors/font-awesome/css/font-awesome.css">
+</head>
+<body>
+    <div ng-app="myApp">
+        <!-- header -->
+
+
+                <nav class="navbar navbar-expand-lg p-0" >
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse text-header" id="navbarSupportedContent" style="font-size:x-large;">
+                        <a href="/" class="on-click"style="color:aliceblue">                  
+                            <img src="~/Assets/images/logo1.png" alt=""><span>TRANG QUẢN LÝ VÉ MÁY BAY</span>
+                        </a>
+
+                    </div>
+                    <div class="text-center mx-4">
+                        <a class="dh " href="/Client/TraCuuDH">
+                            <div style="text-decoration: none;">
+                                @HttpContext.Current.User.Identity.GetUserName()
+                            </div>
+                        </a>
+                    </div>
+                </nav>
+        <div class="page-container">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-content">
+                    <!-- Main navigation -->
+                    <ul class="navigation">
+                        <li class="active"><a href="/"><span>Dashboard</span> <i class="icon-screen2"></i></a></li>
+                        <li>
+                            <a href="/Airline/Index"><span>Airlines</span> <i class="icon-paragraph-justify2"></i></a>
+                        </li>
+                        <li>
+                            <a href="/Flights/Index"><span>Flights</span> <i class="icon-grid"></i></a>
+                        </li>
+                        <li>
+                            <a href="/Orders/Index"><span>Orders</span> <i class="icon-copy"></i></a>
+                        </li>
+                        <li>
+                            <a href="/TicketsTypes/Index"><span>TicketsTypes</span> <i class="icon-numbered-list"></i></a>
+                        </li>
+                        @if (HttpContext.Current.User.IsInRole("Admin"))
+                        {
+                            <li><a href="/User/Index"><span>User</span> <i class="icon-bars"></i></a></li>
+                        }
+                    </ul>
+                    <!-- /main navigation -->
+
+                </div>
+            </div>
+            <!-- /sidebar -->
+
+        </div>
+        <div class="page-content">
+            <div class="page-content-inner">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="@Url.Content("https://code.jquery.com/jquery-3.3.1.slim.min.js")" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <script src="@Url.Content("~/bower_components/boostrap/dist/js/bootstrap.min.js")"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+
+
+
+    <script src="@Url.Content("https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js")" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+</body>
+</html>
+@RenderSection("Scripts", false)
+

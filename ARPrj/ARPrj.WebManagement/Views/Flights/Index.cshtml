@@ -3,7 +3,16 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="content-header">
 
+    <div class="leftside-content-header">
+
+        <ul class="breadcrumbs">
+            <li><a href="/">Trang chủ</a></li>
+            <li><a href="/">Dashboard</a></li>
+        </ul>
+    </div>
+</div>
 <h2>Index</h2>
 
 <p>
@@ -41,41 +50,42 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.From)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.To)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DepartureTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ArrivalTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SeatsLeft)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreateDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UpdateDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Airline.AirlineName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InformationFlight.InformationFlightID)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.FlightId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.FlightId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.FlightId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.From)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.To)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartureTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArrivalTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SeatsLeft)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Airline.AirlineName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InformationFlight.InformationFlightID)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.FlightId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.FlightId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.FlightId })
+            </td>
+        </tr>
+    }
 
 </table>

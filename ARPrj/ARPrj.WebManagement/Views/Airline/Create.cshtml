@@ -3,14 +3,23 @@
 @{
     ViewBag.Title = "Create";
 }
+<div class="content-header">
 
+    <div class="leftside-content-header">
+
+        <ul class="breadcrumbs">
+            <li><a href="/">Trang chủ</a></li>
+            <li><a href="/">Dashboard</a></li>
+        </ul>
+    </div>
+</div>
 <h2>Create</h2>
 
 
-@using (Html.BeginForm("Create","Airline", FormMethod.Post))
+@using (Html.BeginForm("Create", "Airline", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>AirlineModel</h4>
         <hr />

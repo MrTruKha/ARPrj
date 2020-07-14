@@ -47,6 +47,7 @@ namespace PMS.Web.Security
                 if (!string.IsNullOrEmpty(Roles))
                 {
                     var roles = Roles.Split(',');
+                    var id = HttpContext.Current.Profile.UserName;
                     if (!roles.Any(x => filterContext.HttpContext.User.IsInRole(x)))
                     {
                         filterContext.Result = new ViewResult{ViewName = "~/Views/Shared/Error.cshtml"

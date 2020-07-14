@@ -7,9 +7,12 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ARPrj.DataAccess;
+using PMS.Web.Security;
 
 namespace ARPrj.WebManagement.Controllers
 {
+    [Authorize]
+    [CustomAuthorize("Admin")]
     public class InformationFlightsController : Controller
     {
         private ARPrjEntities db = new ARPrjEntities();
