@@ -28,6 +28,14 @@
         <AssociationConnector Association="ARPrjModel.FK__OrderDeta__Ticke__5441852A" ManuallyRouted="false" />
         <AssociationConnector Association="ARPrjModel.FK__UsersRole__RoleI__4CA06362" ManuallyRouted="false" />
         <AssociationConnector Association="ARPrjModel.FK__UsersRole__UserI__4BAC3F29" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ARPrjModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ARPrjModel.AspNetRole" Width="1.5" PointX="10.75" PointY="10.75" />
+        <EntityTypeShape EntityType="ARPrjModel.AspNetUserClaim" Width="1.5" PointX="15.25" PointY="9.25" />
+        <EntityTypeShape EntityType="ARPrjModel.AspNetUserLogin" Width="1.5" PointX="15.25" PointY="12" />
+        <EntityTypeShape EntityType="ARPrjModel.AspNetUser" Width="1.5" PointX="13" PointY="9.125" />
+        <AssociationConnector Association="ARPrjModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="ARPrjModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="ARPrjModel.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -2239,6 +2239,12 @@
     <Content Include="Assets\client\css\Home.css" />
     <Content Include="Assets\client\css\login.css" />
     <Content Include="Assets\client\css\SignIn.css" />
+    <Content Include="Assets\client\image_icon\Home\gotadi.png" />
+    <Content Include="Assets\client\image_icon\Home\gt1.jpg" />
+    <Content Include="Assets\client\image_icon\Home\gt2.jpg" />
+    <Content Include="Assets\client\image_icon\Home\gt3.jpg" />
+    <Content Include="Assets\client\image_icon\Home\pq.jpg" />
+    <Content Include="Assets\client\image_icon\Home\tuyet.jpg" />
     <Content Include="Assets\client\image_icon\icon_kit\add%402x.png" />
     <Content Include="Assets\client\image_icon\icon_kit\add%403x.png" />
     <Content Include="Assets\client\image_icon\icon_kit\Add-1%402x.png" />
