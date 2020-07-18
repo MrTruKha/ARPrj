@@ -1,42 +1,253 @@
 ﻿@using Microsoft.AspNet.Identity
 @{
-    if (!HttpContext.Current.User.Identity.IsAuthenticated) { Layout = "~/Views/Shared/_Layout.cshtml"; }
+    if (!HttpContext.Current.User.Identity.IsAuthenticated || HttpContext.Current.User.IsInRole("Customer")) { 
+        Layout = "~/Views/Shared/_Layout.cshtml"; }
     ViewBag.Title = "Home Page";
 }
-<div class="content-header">
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+              crossorigin="anonymous">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <div class="leftside-content-header">
-
-        <ul class="breadcrumbs">
-            <li><a href="/">Trang chủ</a></li>
-            <li><a href="/">Dashboard</a></li>
-        </ul>
-    </div>
-</div>
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link href="~/Assets/client/css/Home.css" rel="stylesheet" />
+    </head>
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <div class="col-md-12 col-lg-1 col-xs-12"></div>
+    <div class="col-md-12 col-lg-3 col-xs-12">
+        <img style="height: 100px" src="~/Assets/client/image_icon/Home/gotadi.png" />
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <div class="col-md-12 col-lg-1 col-xs-12"></div>
+    <div class="col-md-12 col-lg-7 col-xs-12">
+        <div class="abc row">
+            <div class="col-lg-3 col-sm-3 col-xs-3">
+                <div class="phone row">
+                    <div class="col-lg-1"><i class="fas fa-briefcase"></i></div>
+                    <div class="col-lg-10">
+                        Tro thanh doi tac
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-3 col-xs-3">
+                <div class="mail row">
+                    <div class="col-lg-1"><i class="far fa-handshake"></i></div>
+                    <div class="col-lg-9">
+                        Lien ket hop tac
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-3 col-xs-3">
+                <div class="container">
+                    <div class="dropdown">
+                        <button class=" btn btn-success" type="button" data-toggle="dropdown">Tai khoan</button>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Account/login">Login</a></li>
+                            <li><a href="/Acccount/register">Register</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+</div>
+
+<hr>
+<div class="menu">
+    <ul>
+        <i class="fas fa-home home"></i>
+        <li><a href="/homepage">Trang chu</a></li>
+        <li><a href="/Hoptac">Gioi thieu</a></li>
+        <li><a href="/contactUs">Ve may bay</a></li>
+        <li><a href="/feedback">Thanh toan</a></li>
+        <li><a href="/aboutUs">ABOUT US</a></li>
+        <li><a href="/register">Dang ky</a></li>
+        <li><a href="/Account/login">dang nhap</a></li>
+    </ul>
+</div>
+
+<div class="carousel-item active">
+    <img src="https://static2.gotadi.com/web/images/banner-slider-1.jpg" class="d-block w-100" alt="...">
+</div>
+<section class="search-sec">
+    <div class="a">
+        <button class="btn btn-light" type="button">
+            <i class="fas fa-plane"></i> Dat Ve May Bay
+        </button>
     </div>
+    <div class="container">
+        <form action="#" method="post" novalidate="novalidate" class="www">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <div class="row">
+                                <div class="col-lg-6 col-sm-6 col-md-6 p-0">
+                                    <select class="form-control search-slt">
+                                        <option value=”0″>Chon diem di</option>
+                                        <option value=”29″>Ha Noi</option>
+                                        <option value=”15″>Hai Phong</option>
+                                        <option value=”43″>Da Nang</option>
+                                        <option value=”99″>Tp HCM</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-6 col-sm-6 col-md-6 p-0">
+                                    <select class="form-control search-slt">
+                                        <option value=”0″>Chon diem den</option>
+                                        <option value=”29″>Ha Noi</option>
+                                        <option value=”15″>Hai Phong</option>
+                                        <option value=”43″>Da Nang</option>
+                                        <option value=”99″>Tp HCM</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12">
+                            <div class="row">
+                                <div class="col-lg-6 col-sm-6 col-md-6 p-0">
+                                    <input type="date" class="form-control search-slt" placeholder="Enter start date">
+                                </div>
+                                <div class="col-lg-6 col-sm-6 col-md-6 p-0">
+                                    <input type="date" class="form-control search-slt" placeholder="Enter end date">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <div class="row">
+                                <div class="col-lg-6 col-sm-6 col-md-6 p-0">
+                                    <input type="number" min="1" max="30" class="form-control search-slt" placeholder="Enter number ticket">
+                                </div>
+                                <div class="col-lg-6 col-sm-6 col-md-6 p-0">
+                                    <select class="form-control search-slt">
+                                        <option value=”0″>Chon loai ve</option>
+                                        <option value=”1″>Thuong gia</option>
+                                        <option value=”2″>Pho thong dac biet</option>
+                                        <option value=”3″>Pho thong</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 p-3">
+                <button type="button" class="btn btn-success wrn-btn">Tim chuyen bay</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-lg-4 col-sm-4">
+            <img src="https://static2.gotadi.com/web/icons/price.png"
+                 class="rounded-circle" alt="" width="100px" height="100px">
+            <h4 class="">Cam ket gia luon re</h4>
+            <p>Gia ve may bay va phong khach san trong nuoc va quoc te</p>
+        </div>
+        <div class="col-lg-4 col-sm-4">
+            <img src="https://static2.gotadi.com/web/icons/support.png"
+                 class="rounded-circle" alt="" width="100px" height="100px">
+            <h4 class="">Dich vu khach hang tan tinh</h4>
+            <p>Tong dai ho tro va cham soc khach hang 24/7</p>
+        </div>
+        <div class="col-lg-4 col-sm-4">
+            <img src="https://static2.gotadi.com/web/icons/payment.png"
+                 class="rounded-circle" alt="" width="100px" height="100px">
+            <h4 class="">Da dang phuong thuc thanh toan</h4>
+            <p>Thanh toan de dang, an toan tuyet doi</p>
+        </div>
+    </div>
+</div>
+<hr>
+<h2 style="text-align: center">Uu dai ngay hom nay</h2>
+<div id="carousel-example" class="carousel slide hidden-xs" data-ride="carousel">
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+        <div class="item active">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="col-item">
+                        <div class="photo">
+                            <img src="https://www2.gotadi.com//Upload/imgbanner/imgbanner260520200959105910.jpg" class="img-responsive" alt="a" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="col-item">
+                        <div class="photo">
+                            <img src="https://www2.gotadi.com//Upload/imgbanner/imgbanner22052020110310310.jpg" class="img-responsive" alt="a" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="col-item">
+                        <div class="photo">
+                            <img src="https://www2.gotadi.com//Upload/imgbanner/imgbanner130520200434203420.jpg" class="img-responsive" alt="a" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="col-item">
+                        <div class="photo">
+                            <img src="https://www2.gotadi.com//Upload/imgbanner/imgbanner050520200225562556.jpg" class="img-responsive" alt="a" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container gift">
+    <div class="jumbotron" style="margin-top: 40px">
+        <div class="row">
+            <div class="col-lg-3">
+                <img src="https://www.gotadi.com/assets/images/member-gtd.svg" alt="">
+            </div>
+            <div class="col-lg-7">
+                <h2>Chi danh rieng cho thanh vien gotadi</h2>
+                <span>Quản lý giao dịch, lưu danh sách hành khách thường xuyên, thông báo nhắc nhở hành trình, hưởng nhiều ưu đãi độc quyền chỉ khi tham gia cùng chúng tôi.</span>
+            </div>
+            <div class="col-lg-1">
+                <button type="button" class="btn btn-success"><a href="Login.html">Dang ky</a></button>
+            </div>
+            <div class="col-lg-1">
+                <button type="button" class="btn btn-default">Dang nhap</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2 style="text-align: center">Noi luu tru va diem den pho bien</h2>
+
+<div>
+    <div class="row" style="margin-left: 20px">
+        <div class="">
+            <img src="~/Assets/client/image_icon/Home/pq.jpg" />
+        </div>
+        <div class="">
+            <img src="../img/pq.jpg" alt="">
+        </div>
+    </div>
+</div>
+
+<hr>
+<div class="container">
+    <div class="float-right"><a href="#" class="nav-link">Back to top</a></div>
+    <div>
+        &copy 2017 <a href="#">Company pency</a>
+    </div>
+</div>
 </div>
