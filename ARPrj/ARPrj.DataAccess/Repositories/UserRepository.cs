@@ -58,7 +58,7 @@ namespace ARPrj.DataAccess.Repositoeies
                               where !r.Name.Equals("Admin")
                               select new UserModel
                               {
-                                  UserId = Int32.Parse(u.Id),
+                                  UserId = u.Id,
                                   UserName = u.UserName,                               
                                   Email = u.Email,
                                   RoleName = r.Name,
@@ -114,7 +114,7 @@ namespace ARPrj.DataAccess.Repositoeies
                               where !r.Name.Equals("Admin")
                               select new UserModel
                               {
-                                  UserId = Int32.Parse(u.Id),
+                                  UserId = u.Id,
                                   UserName = u.UserName,
                                   Email = u.Email,
                                   RoleName = r.Name,
@@ -228,7 +228,7 @@ namespace ARPrj.DataAccess.Repositoeies
                               join r in _dbSetRole on ur.RoleId equals r.Id
                               select new UserModel
                               {
-                                  UserId = Int32.Parse(u.Id),
+                                  UserId = u.Id,
                                   UserName = u.UserName,
                                   Email = u.Email,
                                   RoleName = r.Name,

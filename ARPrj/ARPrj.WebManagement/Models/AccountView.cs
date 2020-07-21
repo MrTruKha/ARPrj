@@ -13,5 +13,7 @@ namespace ARPrj.WebManagement.Models
         [DataType(DataType.Password)]
         [Required(ErrorMessage = "Password required")]
         public string Password { get; set; }
+        public string Email { get; set; }
+        public string FullName { get; set; }
     }
 }

@@ -91,3 +91,24 @@ Create table [OrderDetail](
 	[Count] int not null,
 	TicketsTypeId int foreign key references [TicketsType](TicketsTypeId)
 );
+
+
+
+Create table [Airports](
+	AirportId int not null identity(1,1),
+	[Name] nvarchar(200),
+	primary key(AirportId),
+);
+
+
+
+ALTER TABLE [Flights]
+Drop COLUMN [From];
+ALTER TABLE [Flights]
+drop column [to];
+ALTER TABLE [Flights]
+add [To] int,
+FOREIGN KEY([To]) REFERENCES dbo.Flights(FlightId);
+ALTER TABLE [Flights]
+add [From] int,
+FOREIGN KEY([From]) REFERENCES dbo.Flights(FlightId);

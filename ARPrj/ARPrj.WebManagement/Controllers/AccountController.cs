@@ -6,6 +6,9 @@ using ARPrj.Service;
 using ARPrj.WebManagement.Models;
 using Microsoft.AspNet.Identity.Owin;
 using ARPrj.WebManagement.App_Start;
+using System.Web.WebPages;
+using ARPrj.DataAccess.Model;
+using Microsoft.AspNet.Identity;
 
 namespace PMS.Web.Controllers
 {
@@ -50,6 +53,52 @@ namespace PMS.Web.Controllers
                 _userManager = value;
             }
         }
+        [AllowAnonymous]
+        public ActionResult Register()
+        {
+            return View();
+        }
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Register(AccountView model, string returnUrl)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            if (_userService.GetUserByName(model.UserName)!=null)
+            {
+                ModelState.AddModelError("Error", "UserName is already in use");
+                return View(model);
+            }
+            if (model.Email.IsEmpty())
+            {
+                ModelState.AddModelError("Error", "Email cannot be empty ");
+                return View(model);
+            }
+            if (_userService.CheckEmail(model.Email,""))
+            {
+                ModelState.AddModelError("Error", "Email is already in use");
+                return View(model);
+            }
+            // This doesn't count login failures towards account lockout
+            // To enable password failures to trigger account lockout, change to shouldLockout: true
+            var user = new UserCommon() {UserName=model.UserName ,Email=model.Email,FullName=model.FullName,PasswordHash=model.Password,Status=true };
+            var result = _userService.AddUser(user, "Customer");
+            if (result)
+            {
+                return RedirectToAction("Index", "Home");
+
+            }
+            else
+            {
+                ModelState.AddModelError("", "Invalid login attempt.");
+                return View(model);
+
+            }
+        }
+
         // GET: Account
         [AllowAnonymous]
         public ActionResult Login()
