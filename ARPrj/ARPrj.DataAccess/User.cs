@@ -18,7 +18,6 @@ namespace ARPrj.DataAccess
         public User()
         {
             this.Orders = new HashSet<Order>();
-            this.UsersRoles = new HashSet<UsersRole>();
         }
     
         public int UserId { get; set; }
@@ -31,7 +30,5 @@ namespace ARPrj.DataAccess
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UsersRole> UsersRoles { get; set; }
     }
 }

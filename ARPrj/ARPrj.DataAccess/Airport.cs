@@ -12,18 +12,21 @@ namespace ARPrj.DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class Role
+    public partial class Airport
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Role()
+        public Airport()
         {
-            this.UsersRoles = new HashSet<UsersRole>();
+            this.Flights = new HashSet<Flight>();
+            this.Flights1 = new HashSet<Flight>();
         }
     
-        public int RoleId { get; set; }
-        public int Role1 { get; set; }
+        public int AirportId { get; set; }
+        public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UsersRole> UsersRoles { get; set; }
+        public virtual ICollection<Flight> Flights { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Flight> Flights1 { get; set; }
     }
 }

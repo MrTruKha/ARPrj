@@ -21,8 +21,6 @@ namespace ARPrj.DataAccess
         }
     
         public int FlightId { get; set; }
-        public string From { get; set; }
-        public string To { get; set; }
         public Nullable<System.TimeSpan> DepartureTime { get; set; }
         public Nullable<System.TimeSpan> ArrivalTime { get; set; }
         public Nullable<int> SeatsLeft { get; set; }
@@ -30,8 +28,12 @@ namespace ARPrj.DataAccess
         public Nullable<int> AirlineId { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
+        public Nullable<int> To { get; set; }
+        public Nullable<int> From { get; set; }
     
         public virtual Airline Airline { get; set; }
+        public virtual Airport Airport { get; set; }
+        public virtual Airport Airport1 { get; set; }
         public virtual InformationFlight InformationFlight { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }

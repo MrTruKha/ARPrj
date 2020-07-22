@@ -4,38 +4,29 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fbbc5a8192c4446a98dafdd3c85b3e3c" Name="Diagram1" ZoomLevel="88">
-        <EntityTypeShape EntityType="ARPrjModel.Airline" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ARPrjModel.AirlinesTicketsType" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ARPrjModel.Flight" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ARPrjModel.InformationFlight" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ARPrjModel.Order" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ARPrjModel.OrderDetail" Width="1.5" PointX="7.5" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ARPrjModel.Promotion" Width="1.5" PointX="7.75" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ARPrjModel.Role" Width="1.5" PointX="3" PointY="15.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ARPrjModel.sysdiagram" Width="1.5" PointX="9.75" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ARPrjModel.TicketsType" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ARPrjModel.User" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ARPrjModel.UsersRole" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="4841fc274e63468fa82ffe7ca7c77847" Name="Diagram1">
+        <EntityTypeShape EntityType="ARPrjModel.Airline" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARPrjModel.AirlinesTicketsType" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARPrjModel.Airport" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARPrjModel.Flight" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARPrjModel.InformationFlight" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARPrjModel.Order" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARPrjModel.OrderDetail" Width="1.5" PointX="7.5" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARPrjModel.Promotion" Width="1.5" PointX="7.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARPrjModel.sysdiagram" Width="1.5" PointX="9.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARPrjModel.TicketsType" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARPrjModel.User" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="ARPrjModel.FK__AirlinesT__Airli__4222D4EF" ManuallyRouted="false" />
         <AssociationConnector Association="ARPrjModel.FK__Flights__Airline__3F466844" ManuallyRouted="false" />
         <AssociationConnector Association="ARPrjModel.FK__AirlinesT__Ticke__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="ARPrjModel.FK__Flights__From__05D8E0BE" ManuallyRouted="false" />
+        <AssociationConnector Association="ARPrjModel.FK__Flights__To__04E4BC85" ManuallyRouted="false" />
         <AssociationConnector Association="ARPrjModel.FK__Flights__Informa__3E52440B" ManuallyRouted="false" />
         <AssociationConnector Association="ARPrjModel.FK__OrderDeta__Fligh__534D60F1" ManuallyRouted="false" />
         <AssociationConnector Association="ARPrjModel.FK__Informati__Ticke__3B75D760" ManuallyRouted="false" />
         <AssociationConnector Association="ARPrjModel.FK__Order__CustomerI__4F7CD00D" ManuallyRouted="false" />
         <AssociationConnector Association="ARPrjModel.FK__OrderDeta__Order__52593CB8" ManuallyRouted="false" />
         <AssociationConnector Association="ARPrjModel.FK__OrderDeta__Ticke__5441852A" ManuallyRouted="false" />
-        <AssociationConnector Association="ARPrjModel.FK__UsersRole__RoleI__4CA06362" ManuallyRouted="false" />
-        <AssociationConnector Association="ARPrjModel.FK__UsersRole__UserI__4BAC3F29" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="ARPrjModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="ARPrjModel.AspNetRole" Width="1.5" PointX="10.75" PointY="10.75" />
-        <EntityTypeShape EntityType="ARPrjModel.AspNetUserClaim" Width="1.5" PointX="15.25" PointY="9.25" />
-        <EntityTypeShape EntityType="ARPrjModel.AspNetUserLogin" Width="1.5" PointX="15.25" PointY="12" />
-        <EntityTypeShape EntityType="ARPrjModel.AspNetUser" Width="1.5" PointX="13" PointY="9.125" />
-        <AssociationConnector Association="ARPrjModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
-        <AssociationConnector Association="ARPrjModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
-        <AssociationConnector Association="ARPrjModel.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

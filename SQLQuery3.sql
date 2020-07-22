@@ -105,10 +105,10 @@ Create table [Airports](
 ALTER TABLE [Flights]
 Drop COLUMN [From];
 ALTER TABLE [Flights]
-drop column [to];
+drop column [To];
 ALTER TABLE [Flights]
 add [To] int,
-FOREIGN KEY([To]) REFERENCES dbo.Flights(FlightId);
+FOREIGN KEY([To]) REFERENCES Airports(AirportId);
 ALTER TABLE [Flights]
 add [From] int,
-FOREIGN KEY([From]) REFERENCES dbo.Flights(FlightId);
+FOREIGN KEY([From]) REFERENCES Airports(AirportId);

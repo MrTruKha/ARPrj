@@ -12,8 +12,8 @@ namespace ARPrj.DataAccess.Repositoeies
     public interface IRoleRepository : IBaseIdentityRepository<IdentityRole>
     {
         bool AddRole(IdentityRole entity);
-        void DeleteRole(Role entity);
-        void UpdateRole(Role entity);
+        void DeleteRole(IdentityRole entity);
+        void UpdateRole(IdentityRole entity);
         IQueryable<IdentityRole> GetRoles();
     }
     public class RoleRepository : BaseIdentityRepository<IdentityRole>, IRoleRepository
@@ -30,7 +30,7 @@ namespace ARPrj.DataAccess.Repositoeies
             return true;
         }
 
-        public void DeleteRole(Role entity)
+        public void DeleteRole(IdentityRole entity)
         {
             //Delete(entity);
         }
@@ -41,7 +41,7 @@ namespace ARPrj.DataAccess.Repositoeies
             return result;
         }
 
-        public void UpdateRole(Role entity)
+        public void UpdateRole(IdentityRole entity)
         {
             throw new NotImplementedException();
         }

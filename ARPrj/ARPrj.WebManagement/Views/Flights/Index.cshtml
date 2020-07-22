@@ -23,10 +23,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.From)
+            @Html.DisplayNameFor(model => model.Airport.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.To)
+            @Html.DisplayNameFor(model => model.Airport1.Name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DepartureTime)
@@ -56,10 +56,10 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.From)
+                @Html.DisplayFor(modelItem => item.Airport.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.To)
+                @Html.DisplayFor(modelItem => item.Airport1.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DepartureTime)

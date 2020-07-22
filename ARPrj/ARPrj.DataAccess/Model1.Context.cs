@@ -27,15 +27,14 @@ namespace ARPrj.DataAccess
     
         public virtual DbSet<Airline> Airlines { get; set; }
         public virtual DbSet<AirlinesTicketsType> AirlinesTicketsTypes { get; set; }
+        public virtual DbSet<Airport> Airports { get; set; }
         public virtual DbSet<Flight> Flights { get; set; }
         public virtual DbSet<InformationFlight> InformationFlights { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Promotion> Promotions { get; set; }
-        public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TicketsType> TicketsTypes { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<UsersRole> UsersRoles { get; set; }
     }
 }
