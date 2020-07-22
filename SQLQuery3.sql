@@ -112,3 +112,8 @@ FOREIGN KEY([To]) REFERENCES Airports(AirportId);
 ALTER TABLE [Flights]
 add [From] int,
 FOREIGN KEY([From]) REFERENCES Airports(AirportId);
+
+ALTER TABLE [Flights]
+add [DepartureDay] Date;
+ALTER TABLE [Flights]
+add [ArrivalDay] Date;
