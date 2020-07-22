@@ -21,7 +21,7 @@ namespace ARPrj.WebManagement.Controllers
         // GET: Flights
         public ActionResult Index()
         {
-            var flights = db.Flights.Include(f => f.Airline).Include(f => f.InformationFlight).Include(f=>f.Airport).Include(f=>f.Airport1);
+            var flights = db.Flights.Include(f => f.Airline).Include(f=>f.Airport).Include(f=>f.Airport1);
             return View(flights.ToList());
         }
 
@@ -44,8 +44,8 @@ namespace ARPrj.WebManagement.Controllers
         public ActionResult Create()
         {
             ViewBag.AirlineId = new SelectList(db.Airlines, "AirlineId", "AirlineName");
-            ViewBag.InformationFlightID = new SelectList(db.InformationFlights, "InformationFlightID", "InformationFlightID");
-            ViewBag.AirportId=new SelectList(db.Airports,"AiportId","Name");
+            ViewBag.To = new SelectList(db.Airports, "AirportId", "Name");
+            ViewBag.From = new SelectList(db.Airports, "AirportId", "Name");
             return View();
         }
 
@@ -54,7 +54,7 @@ namespace ARPrj.WebManagement.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "FlightId,From,To,DepartureTime,ArrivalTime,SeatsLeft,InformationFlightID,AirlineId,CreateDate,UpdateDate")] Flight flight)
+        public ActionResult Create([Bind(Include = "FlightId,From,To,DepartureTime,ArrivalTime,DepartureDay,ArrivalDay,SeatsLeft,InformationFlightID,AirlineId,CreateDate,UpdateDate")] Flight flight)
         {
             if (ModelState.IsValid)
             {
@@ -64,7 +64,8 @@ namespace ARPrj.WebManagement.Controllers
             }
 
             ViewBag.AirlineId = new SelectList(db.Airlines, "AirlineId", "AirlineName", flight.AirlineId);
-            ViewBag.InformationFlightID = new SelectList(db.InformationFlights, "InformationFlightID", "InformationFlightID", flight.InformationFlightID);
+            ViewBag.To = new SelectList(db.Airports, "AirportId", "Name", flight.To);
+            ViewBag.From = new SelectList(db.Airports, "AirportId", "Name", flight.From);
             return View(flight);
         }
 
@@ -81,7 +82,8 @@ namespace ARPrj.WebManagement.Controllers
                 return HttpNotFound();
             }
             ViewBag.AirlineId = new SelectList(db.Airlines, "AirlineId", "AirlineName", flight.AirlineId);
-            ViewBag.InformationFlightID = new SelectList(db.InformationFlights, "InformationFlightID", "InformationFlightID", flight.InformationFlightID);
+            ViewBag.To = new SelectList(db.Airports, "AirportId", "Name", flight.To);
+            ViewBag.From = new SelectList(db.Airports, "AirportId", "Name", flight.From);
             return View(flight);
         }
 
@@ -90,7 +92,7 @@ namespace ARPrj.WebManagement.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "FlightId,From,To,DepartureTime,ArrivalTime,SeatsLeft,InformationFlightID,AirlineId,CreateDate,UpdateDate")] Flight flight)
+        public ActionResult Edit([Bind(Include = "FlightId,From,To,DepartureTime,ArrivalTime,DepartureDay,ArrivalDay,SeatsLeft,InformationFlightID,AirlineId,CreateDate,UpdateDate")] Flight flight)
         {
             if (ModelState.IsValid)
             {
@@ -99,7 +101,8 @@ namespace ARPrj.WebManagement.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.AirlineId = new SelectList(db.Airlines, "AirlineId", "AirlineName", flight.AirlineId);
-            ViewBag.InformationFlightID = new SelectList(db.InformationFlights, "InformationFlightID", "InformationFlightID", flight.InformationFlightID);
+            ViewBag.To = new SelectList(db.Airports, "AirportId", "Name", flight.To);
+            ViewBag.From = new SelectList(db.Airports, "AirportId", "Name", flight.From);
             return View(flight);
         }
 
@@ -136,15 +139,6 @@ namespace ARPrj.WebManagement.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
-        public ActionResult SearchFlights(SearchResultViewModel searchModel)
-        {
-             var flights = db.Flights.Include(f => f.Airline).Include(f => f.InformationFlight).Include(f => f.Airport).Include(f => f.Airport1)
-                 .Where(x=>x.DepartureDay.Value.Date==searchModel.DepartureDate.Date)
-                 .Where(x=>x.SeatsLeft.Value>=searchModel.Amount)
-                 .Where(x=>x.Airport.AirportId==searchModel.To.AirportId)
-                 .Where(x => x.Airport1.AirportId == searchModel.From.AirportId);
-            return View("index");
         }
     }
 }

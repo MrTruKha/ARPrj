@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ARPrjModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ARPrjModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Airlines">
           <Key>
             <PropertyRef Name="AirlineId" />
@@ -42,7 +42,6 @@
           <Property Name="DepartureTime" Type="time" Precision="7" />
           <Property Name="ArrivalTime" Type="time" Precision="7" />
           <Property Name="SeatsLeft" Type="int" />
-          <Property Name="InformationFlightID" Type="int" />
           <Property Name="AirlineId" Type="int" />
           <Property Name="CreateDate" Type="datetime" />
           <Property Name="UpdateDate" Type="datetime" />
@@ -59,6 +58,8 @@
           <Property Name="TicketsTypeId" Type="int" />
           <Property Name="CreateDate" Type="datetime" />
           <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="FlightId" Type="int" />
+          <Property Name="Count" Type="int" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -147,7 +148,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Flights__From__71D1E811">
+        <Association Name="FK__Flights__From__05D8E0BE">
           <End Role="Airports" Type="Self.Airports" Multiplicity="0..1" />
           <End Role="Flights" Type="Self.Flights" Multiplicity="*" />
           <ReferentialConstraint>
@@ -159,19 +160,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Flights__Informa__3E52440B">
-          <End Role="InformationFlights" Type="Self.InformationFlights" Multiplicity="0..1" />
-          <End Role="Flights" Type="Self.Flights" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="InformationFlights">
-              <PropertyRef Name="InformationFlightID" />
-            </Principal>
-            <Dependent Role="Flights">
-              <PropertyRef Name="InformationFlightID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Flights__To__70DDC3D8">
+        <Association Name="FK__Flights__To__04E4BC85">
           <End Role="Airports" Type="Self.Airports" Multiplicity="0..1" />
           <End Role="Flights" Type="Self.Flights" Multiplicity="*" />
           <ReferentialConstraint>
@@ -180,6 +169,18 @@
             </Principal>
             <Dependent Role="Flights">
               <PropertyRef Name="To" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Informati__Fligh__06CD04F7">
+          <End Role="Flights" Type="Self.Flights" Multiplicity="0..1" />
+          <End Role="InformationFlights" Type="Self.InformationFlights" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Flights">
+              <PropertyRef Name="FlightId" />
+            </Principal>
+            <Dependent Role="InformationFlights">
+              <PropertyRef Name="FlightId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -266,17 +267,17 @@
             <End Role="Airlines" EntitySet="Airlines" />
             <End Role="Flights" EntitySet="Flights" />
           </AssociationSet>
-          <AssociationSet Name="FK__Flights__From__71D1E811" Association="Self.FK__Flights__From__71D1E811">
+          <AssociationSet Name="FK__Flights__From__05D8E0BE" Association="Self.FK__Flights__From__05D8E0BE">
             <End Role="Airports" EntitySet="Airports" />
             <End Role="Flights" EntitySet="Flights" />
           </AssociationSet>
-          <AssociationSet Name="FK__Flights__Informa__3E52440B" Association="Self.FK__Flights__Informa__3E52440B">
+          <AssociationSet Name="FK__Flights__To__04E4BC85" Association="Self.FK__Flights__To__04E4BC85">
+            <End Role="Airports" EntitySet="Airports" />
+            <End Role="Flights" EntitySet="Flights" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Informati__Fligh__06CD04F7" Association="Self.FK__Informati__Fligh__06CD04F7">
+            <End Role="Flights" EntitySet="Flights" />
             <End Role="InformationFlights" EntitySet="InformationFlights" />
-            <End Role="Flights" EntitySet="Flights" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Flights__To__70DDC3D8" Association="Self.FK__Flights__To__70DDC3D8">
-            <End Role="Airports" EntitySet="Airports" />
-            <End Role="Flights" EntitySet="Flights" />
           </AssociationSet>
           <AssociationSet Name="FK__Informati__Ticke__3B75D760" Association="Self.FK__Informati__Ticke__3B75D760">
             <End Role="TicketsType" EntitySet="TicketsType" />
@@ -299,8 +300,7 @@
             <End Role="OrderDetail" EntitySet="OrderDetail" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ARPrjModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -336,8 +336,8 @@
           </Key>
           <Property Name="AirportId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Flights" Relationship="Self.FK__Flights__From__71D1E811" FromRole="Airports" ToRole="Flights" />
-          <NavigationProperty Name="Flights1" Relationship="Self.FK__Flights__To__70DDC3D8" FromRole="Airports" ToRole="Flights" />
+          <NavigationProperty Name="Flights" Relationship="Self.FK__Flights__From__05D8E0BE" FromRole="Airports" ToRole="Flights" />
+          <NavigationProperty Name="Flights1" Relationship="Self.FK__Flights__To__04E4BC85" FromRole="Airports" ToRole="Flights" />
         </EntityType>
         <EntityType Name="Flight">
           <Key>
@@ -347,7 +347,6 @@
           <Property Name="DepartureTime" Type="Time" Precision="7" />
           <Property Name="ArrivalTime" Type="Time" Precision="7" />
           <Property Name="SeatsLeft" Type="Int32" />
-          <Property Name="InformationFlightID" Type="Int32" />
           <Property Name="AirlineId" Type="Int32" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <Property Name="UpdateDate" Type="DateTime" Precision="3" />
@@ -356,9 +355,9 @@
           <Property Name="DepartureDay" Type="DateTime" Precision="0" />
           <Property Name="ArrivalDay" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Airline" Relationship="Self.FK__Flights__Airline__3F466844" FromRole="Flights" ToRole="Airlines" />
-          <NavigationProperty Name="Airport" Relationship="Self.FK__Flights__From__71D1E811" FromRole="Flights" ToRole="Airports" />
-          <NavigationProperty Name="Airport1" Relationship="Self.FK__Flights__To__70DDC3D8" FromRole="Flights" ToRole="Airports" />
-          <NavigationProperty Name="InformationFlight" Relationship="Self.FK__Flights__Informa__3E52440B" FromRole="Flights" ToRole="InformationFlights" />
+          <NavigationProperty Name="Airport" Relationship="Self.FK__Flights__From__05D8E0BE" FromRole="Flights" ToRole="Airports" />
+          <NavigationProperty Name="Airport1" Relationship="Self.FK__Flights__To__04E4BC85" FromRole="Flights" ToRole="Airports" />
+          <NavigationProperty Name="InformationFlights" Relationship="Self.FK__Informati__Fligh__06CD04F7" FromRole="Flights" ToRole="InformationFlights" />
           <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Fligh__534D60F1" FromRole="Flights" ToRole="OrderDetail" />
         </EntityType>
         <EntityType Name="InformationFlight">
@@ -369,8 +368,10 @@
           <Property Name="TicketsTypeId" Type="Int32" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <Property Name="UpdateDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Flights" Relationship="Self.FK__Flights__Informa__3E52440B" FromRole="InformationFlights" ToRole="Flights" />
+          <Property Name="FlightId" Type="Int32" />
+          <NavigationProperty Name="Flight" Relationship="Self.FK__Informati__Fligh__06CD04F7" FromRole="InformationFlights" ToRole="Flights" />
           <NavigationProperty Name="TicketsType" Relationship="Self.FK__Informati__Ticke__3B75D760" FromRole="InformationFlights" ToRole="TicketsType" />
+          <Property Name="Count" Type="Int32" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -468,7 +469,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Flights__From__71D1E811">
+        <Association Name="FK__Flights__From__05D8E0BE">
           <End Role="Airports" Type="Self.Airport" Multiplicity="0..1" />
           <End Role="Flights" Type="Self.Flight" Multiplicity="*" />
           <ReferentialConstraint>
@@ -480,7 +481,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Flights__To__70DDC3D8">
+        <Association Name="FK__Flights__To__04E4BC85">
           <End Role="Airports" Type="Self.Airport" Multiplicity="0..1" />
           <End Role="Flights" Type="Self.Flight" Multiplicity="*" />
           <ReferentialConstraint>
@@ -492,15 +493,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Flights__Informa__3E52440B">
-          <End Role="InformationFlights" Type="Self.InformationFlight" Multiplicity="0..1" />
-          <End Role="Flights" Type="Self.Flight" Multiplicity="*" />
+        <Association Name="FK__Informati__Fligh__06CD04F7">
+          <End Role="Flights" Type="Self.Flight" Multiplicity="0..1" />
+          <End Role="InformationFlights" Type="Self.InformationFlight" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="InformationFlights">
-              <PropertyRef Name="InformationFlightID" />
+            <Principal Role="Flights">
+              <PropertyRef Name="FlightId" />
             </Principal>
-            <Dependent Role="Flights">
-              <PropertyRef Name="InformationFlightID" />
+            <Dependent Role="InformationFlights">
+              <PropertyRef Name="FlightId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -587,17 +588,17 @@
             <End Role="TicketsType" EntitySet="TicketsTypes" />
             <End Role="AirlinesTicketsType" EntitySet="AirlinesTicketsTypes" />
           </AssociationSet>
-          <AssociationSet Name="FK__Flights__From__71D1E811" Association="Self.FK__Flights__From__71D1E811">
+          <AssociationSet Name="FK__Flights__From__05D8E0BE" Association="Self.FK__Flights__From__05D8E0BE">
             <End Role="Airports" EntitySet="Airports" />
             <End Role="Flights" EntitySet="Flights" />
           </AssociationSet>
-          <AssociationSet Name="FK__Flights__To__70DDC3D8" Association="Self.FK__Flights__To__70DDC3D8">
+          <AssociationSet Name="FK__Flights__To__04E4BC85" Association="Self.FK__Flights__To__04E4BC85">
             <End Role="Airports" EntitySet="Airports" />
             <End Role="Flights" EntitySet="Flights" />
           </AssociationSet>
-          <AssociationSet Name="FK__Flights__Informa__3E52440B" Association="Self.FK__Flights__Informa__3E52440B">
+          <AssociationSet Name="FK__Informati__Fligh__06CD04F7" Association="Self.FK__Informati__Fligh__06CD04F7">
+            <End Role="Flights" EntitySet="Flights" />
             <End Role="InformationFlights" EntitySet="InformationFlights" />
-            <End Role="Flights" EntitySet="Flights" />
           </AssociationSet>
           <AssociationSet Name="FK__OrderDeta__Fligh__534D60F1" Association="Self.FK__OrderDeta__Fligh__534D60F1">
             <End Role="Flights" EntitySet="Flights" />
@@ -665,7 +666,6 @@
                 <ScalarProperty Name="DepartureTime" ColumnName="DepartureTime" />
                 <ScalarProperty Name="ArrivalTime" ColumnName="ArrivalTime" />
                 <ScalarProperty Name="SeatsLeft" ColumnName="SeatsLeft" />
-                <ScalarProperty Name="InformationFlightID" ColumnName="InformationFlightID" />
                 <ScalarProperty Name="AirlineId" ColumnName="AirlineId" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
@@ -679,10 +679,12 @@
           <EntitySetMapping Name="InformationFlights">
             <EntityTypeMapping TypeName="ARPrjModel.InformationFlight">
               <MappingFragment StoreEntitySet="InformationFlights">
+                <ScalarProperty Name="Count" ColumnName="Count" />
                 <ScalarProperty Name="InformationFlightID" ColumnName="InformationFlightID" />
                 <ScalarProperty Name="TicketsTypeId" ColumnName="TicketsTypeId" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="FlightId" ColumnName="FlightId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

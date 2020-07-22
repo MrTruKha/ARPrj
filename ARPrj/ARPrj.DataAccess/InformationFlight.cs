@@ -14,19 +14,14 @@ namespace ARPrj.DataAccess
     
     public partial class InformationFlight
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public InformationFlight()
-        {
-            this.Flights = new HashSet<Flight>();
-        }
-    
         public int InformationFlightID { get; set; }
         public Nullable<int> TicketsTypeId { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
+        public Nullable<int> FlightId { get; set; }
+        public Nullable<int> Count { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Flight> Flights { get; set; }
+        public virtual Flight Flight { get; set; }
         public virtual TicketsType TicketsType { get; set; }
     }
 }

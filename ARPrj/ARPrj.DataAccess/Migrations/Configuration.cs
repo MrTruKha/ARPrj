@@ -59,13 +59,13 @@
                     {
                         userManager.AddToRole(item.Id, "Admin");
                     }
-                    if (item.UserName.Contains("ProjectManager"))
+                    if (item.UserName.Contains("Staff"))
                     {
-                        userManager.AddToRole(item.Id, "ProjectManager");
+                        userManager.AddToRole(item.Id, "Staff");
                     }
-                    if (item.UserName.Contains("Member"))
+                    if (item.UserName.Contains("Customer"))
                     {
-                        userManager.AddToRole(item.Id, "Member");
+                        userManager.AddToRole(item.Id, "Customer");
                     }
                 }
             }

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ARPrj.DataAccess.Airport>
+@{
+    ViewBag.Title = "Create";
+}
+<div class="content-header">
+
+    <div class="leftside-content-header">
+
+        <ul class="breadcrumbs">
+            <li><a href="/">Trang chủ</a></li>
+            <li><a href="/">Dashboard</a></li>
+        </ul>
+    </div>
+</div>
+<h2>Create</h2>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.AirportId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.AirportId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.AirportId })
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>

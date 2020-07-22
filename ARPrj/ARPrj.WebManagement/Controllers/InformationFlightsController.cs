@@ -7,12 +7,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ARPrj.DataAccess;
-using PMS.Web.Security;
 
 namespace ARPrj.WebManagement.Controllers
 {
-    [Authorize]
-    [CustomAuthorize("Admin")]
     public class InformationFlightsController : Controller
     {
         private ARPrjEntities db = new ARPrjEntities();
@@ -20,7 +17,7 @@ namespace ARPrj.WebManagement.Controllers
         // GET: InformationFlights
         public ActionResult Index()
         {
-            var informationFlights = db.InformationFlights.Include(i => i.TicketsType);
+            var informationFlights = db.InformationFlights.Include(i => i.Flight).Include(i => i.TicketsType);
             return View(informationFlights.ToList());
         }
 
@@ -42,6 +39,7 @@ namespace ARPrj.WebManagement.Controllers
         // GET: InformationFlights/Create
         public ActionResult Create()
         {
+            ViewBag.FlightId = new SelectList(db.Flights, "FlightId", "FlightId");
             ViewBag.TicketsTypeId = new SelectList(db.TicketsTypes, "TicketsTypeId", "TypeName");
             return View();
         }
@@ -51,15 +49,20 @@ namespace ARPrj.WebManagement.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "InformationFlightID,TicketsTypeId,CreateDate,UpdateDate")] InformationFlight informationFlight)
+        public ActionResult Create([Bind(Include = "Count,InformationFlightID,TicketsTypeId,CreateDate,UpdateDate,FlightId")] InformationFlight informationFlight)
         {
             if (ModelState.IsValid)
             {
                 db.InformationFlights.Add(informationFlight);
                 db.SaveChanges();
+                var flight = db.Flights.FirstOrDefault(x => x.FlightId == informationFlight.FlightId);
+                flight.SeatsLeft = db.InformationFlights.Where(x => x.FlightId == informationFlight.FlightId).Sum(x => x.Count);
+                db.Entry(flight).State = EntityState.Modified;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
+            ViewBag.FlightId = new SelectList(db.Flights, "FlightId", "FlightId", informationFlight.FlightId);
             ViewBag.TicketsTypeId = new SelectList(db.TicketsTypes, "TicketsTypeId", "TypeName", informationFlight.TicketsTypeId);
             return View(informationFlight);
         }
@@ -76,6 +79,7 @@ namespace ARPrj.WebManagement.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.FlightId = new SelectList(db.Flights, "FlightId", "FlightId", informationFlight.FlightId);
             ViewBag.TicketsTypeId = new SelectList(db.TicketsTypes, "TicketsTypeId", "TypeName", informationFlight.TicketsTypeId);
             return View(informationFlight);
         }
@@ -85,14 +89,19 @@ namespace ARPrj.WebManagement.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "InformationFlightID,TicketsTypeId,CreateDate,UpdateDate")] InformationFlight informationFlight)
+        public ActionResult Edit([Bind(Include = "Count,InformationFlightID,TicketsTypeId,CreateDate,UpdateDate,FlightId")] InformationFlight informationFlight)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(informationFlight).State = EntityState.Modified;
                 db.SaveChanges();
+                var flight = db.Flights.FirstOrDefault(x => x.FlightId == informationFlight.FlightId);
+                flight.SeatsLeft = db.InformationFlights.Where(x => x.FlightId == informationFlight.FlightId).Sum(x => x.Count);
+                db.Entry(flight).State = EntityState.Modified;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.FlightId = new SelectList(db.Flights, "FlightId", "FlightId", informationFlight.FlightId);
             ViewBag.TicketsTypeId = new SelectList(db.TicketsTypes, "TicketsTypeId", "TypeName", informationFlight.TicketsTypeId);
             return View(informationFlight);
         }

@@ -4,23 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ff4e0196be614037bdff73e5275dafff" Name="Diagram1">
-        <EntityTypeShape EntityType="ARPrjModel.Airline" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="ARPrjModel.AirlinesTicketsType" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ARPrjModel.Airport" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ARPrjModel.Flight" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ARPrjModel.InformationFlight" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ARPrjModel.Order" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ARPrjModel.OrderDetail" Width="1.5" PointX="7.5" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ARPrjModel.Promotion" Width="1.5" PointX="7.75" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ARPrjModel.TicketsType" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ARPrjModel.User" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="5ba9af76741343aeb006c5106c4128bc" Name="Diagram1">
+        <EntityTypeShape EntityType="ARPrjModel.Airline" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARPrjModel.AirlinesTicketsType" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARPrjModel.Airport" Width="1.5" PointX="3.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARPrjModel.Flight" Width="1.5" PointX="6" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARPrjModel.InformationFlight" Width="1.5" PointX="8.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARPrjModel.Order" Width="1.5" PointX="9" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARPrjModel.OrderDetail" Width="1.5" PointX="11.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARPrjModel.Promotion" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARPrjModel.TicketsType" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARPrjModel.User" Width="1.5" PointX="6.75" PointY="1.25" IsExpanded="true" />
         <AssociationConnector Association="ARPrjModel.FK__AirlinesT__Airli__4222D4EF" ManuallyRouted="false" />
         <AssociationConnector Association="ARPrjModel.FK__Flights__Airline__3F466844" ManuallyRouted="false" />
         <AssociationConnector Association="ARPrjModel.FK__AirlinesT__Ticke__4316F928" ManuallyRouted="false" />
-        <AssociationConnector Association="ARPrjModel.FK__Flights__From__71D1E811" ManuallyRouted="false" />
-        <AssociationConnector Association="ARPrjModel.FK__Flights__To__70DDC3D8" ManuallyRouted="false" />
-        <AssociationConnector Association="ARPrjModel.FK__Flights__Informa__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="ARPrjModel.FK__Flights__From__05D8E0BE" ManuallyRouted="false" />
+        <AssociationConnector Association="ARPrjModel.FK__Flights__To__04E4BC85" ManuallyRouted="false" />
+        <AssociationConnector Association="ARPrjModel.FK__Informati__Fligh__06CD04F7" ManuallyRouted="false" />
         <AssociationConnector Association="ARPrjModel.FK__OrderDeta__Fligh__534D60F1" ManuallyRouted="false" />
         <AssociationConnector Association="ARPrjModel.FK__Informati__Ticke__3B75D760" ManuallyRouted="false" />
         <AssociationConnector Association="ARPrjModel.FK__Order__CustomerI__4F7CD00D" ManuallyRouted="false" />

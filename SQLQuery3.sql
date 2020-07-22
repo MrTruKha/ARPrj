@@ -117,3 +117,13 @@ ALTER TABLE [Flights]
 add [DepartureDay] Date;
 ALTER TABLE [Flights]
 add [ArrivalDay] Date;
+
+
+
+alter table [Flights] drop constraint FK__Flights__Informa__3E52440B;
+alter table [Flights] drop column InformationFlightID;
+
+ALTER TABLE InformationFlights
+add [FlightId] int,
+FOREIGN KEY([FlightId]) REFERENCES [Flights]([FlightId]);
+

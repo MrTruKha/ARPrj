@@ -17,6 +17,7 @@ namespace ARPrj.DataAccess
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Flight()
         {
+            this.InformationFlights = new HashSet<InformationFlight>();
             this.OrderDetails = new HashSet<OrderDetail>();
         }
     
@@ -24,7 +25,6 @@ namespace ARPrj.DataAccess
         public Nullable<System.TimeSpan> DepartureTime { get; set; }
         public Nullable<System.TimeSpan> ArrivalTime { get; set; }
         public Nullable<int> SeatsLeft { get; set; }
-        public Nullable<int> InformationFlightID { get; set; }
         public Nullable<int> AirlineId { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
@@ -36,7 +36,8 @@ namespace ARPrj.DataAccess
         public virtual Airline Airline { get; set; }
         public virtual Airport Airport { get; set; }
         public virtual Airport Airport1 { get; set; }
-        public virtual InformationFlight InformationFlight { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<InformationFlight> InformationFlights { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }

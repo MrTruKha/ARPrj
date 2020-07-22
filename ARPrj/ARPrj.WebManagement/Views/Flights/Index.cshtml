@@ -23,10 +23,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Airport.Name)
+            @Html.DisplayNameFor(model => model.From)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Airport1.Name)
+            @Html.DisplayNameFor(model => model.To)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DepartureTime)
@@ -45,9 +45,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Airline.AirlineName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.InformationFlight.InformationFlightID)
         </th>
         <th></th>
     </tr>
@@ -78,9 +75,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Airline.AirlineName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InformationFlight.InformationFlightID)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.FlightId }) |
