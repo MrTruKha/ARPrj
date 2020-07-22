@@ -102,9 +102,6 @@
     <Compile Include="Repositories\AirlineRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="TicketsType.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

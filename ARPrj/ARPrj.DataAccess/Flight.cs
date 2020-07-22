@@ -30,6 +30,8 @@ namespace ARPrj.DataAccess
         public Nullable<System.DateTime> UpdateDate { get; set; }
         public Nullable<int> To { get; set; }
         public Nullable<int> From { get; set; }
+        public Nullable<System.DateTime> DepartureDay { get; set; }
+        public Nullable<System.DateTime> ArrivalDay { get; set; }
     
         public virtual Airline Airline { get; set; }
         public virtual Airport Airport { get; set; }

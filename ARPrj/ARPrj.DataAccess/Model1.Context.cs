@@ -33,7 +33,6 @@ namespace ARPrj.DataAccess
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Promotion> Promotions { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TicketsType> TicketsTypes { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }

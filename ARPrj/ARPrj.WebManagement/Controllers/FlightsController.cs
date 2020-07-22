@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ARPrj.DataAccess;
+using ARPrj.WebManagement.Models;
 using PMS.Web.Security;
 
 namespace ARPrj.WebManagement.Controllers
@@ -20,7 +21,7 @@ namespace ARPrj.WebManagement.Controllers
         // GET: Flights
         public ActionResult Index()
         {
-            var flights = db.Flights.Include(f => f.Airline).Include(f => f.InformationFlight);
+            var flights = db.Flights.Include(f => f.Airline).Include(f => f.InformationFlight).Include(f=>f.Airport).Include(f=>f.Airport1);
             return View(flights.ToList());
         }
 
@@ -44,6 +45,7 @@ namespace ARPrj.WebManagement.Controllers
         {
             ViewBag.AirlineId = new SelectList(db.Airlines, "AirlineId", "AirlineName");
             ViewBag.InformationFlightID = new SelectList(db.InformationFlights, "InformationFlightID", "InformationFlightID");
+            ViewBag.AirportId=new SelectList(db.Airports,"AiportId","Name");
             return View();
         }
 
@@ -134,6 +136,15 @@ namespace ARPrj.WebManagement.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public ActionResult SearchFlights(SearchResultViewModel searchModel)
+        {
+             var flights = db.Flights.Include(f => f.Airline).Include(f => f.InformationFlight).Include(f => f.Airport).Include(f => f.Airport1)
+                 .Where(x=>x.DepartureDay.Value.Date==searchModel.DepartureDate.Date)
+                 .Where(x=>x.SeatsLeft.Value>=searchModel.Amount)
+                 .Where(x=>x.Airport.AirportId==searchModel.To.AirportId)
+                 .Where(x => x.Airport1.AirportId == searchModel.From.AirportId);
+            return View("index");
         }
     }
 }
