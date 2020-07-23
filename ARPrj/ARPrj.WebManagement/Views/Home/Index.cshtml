@@ -198,7 +198,7 @@
     <div>
         <img src="https://static2.gotadi.com/web/images/banner-slider-1.jpg" class="d-block w-100" alt="..." height="600px">
     </div>
-    <div class="h" style="margin-top:-325px;
+    <div class="h" style="margin-top:-382px;
     margin-bottom: 100px;
     margin-left: 100px;
     color: white;
@@ -272,13 +272,9 @@
                                     Diem di
                                 </label>
                                 <div class="col-sm-10">
-                                    <select class="form-control">
-                                        <option value=”0″>Chon diem di</option>
-                                        <option value=”29″>Ha Noi</option>
-                                        <option value=”15″>Hai Phong</option>
-                                        <option value=”43″>Da Nang</option>
-                                        <option value=”99″>Tp HCM</option>
-                                    </select>                               
+                                    @Html.DropDownList("To",
+                                      null, "Chon diem di",  // property to be used as text of dropdown item
+                                                   new { @class = "form-control" })
                                 </div>
                             </div>
                             <div class="form-group">
@@ -286,13 +282,9 @@
                                     Diem den
                                 </label>
                                 <div class="col-sm-10">
-                                    <select class="form-control">
-                                        <option value=”0″>Chon diem den</option>
-                                        <option value=”29″>Ha Noi</option>
-                                        <option value=”15″>Hai Phong</option>
-                                        <option value=”43″>Da Nang</option>
-                                        <option value=”99″>Tp HCM</option>
-                                    </select>
+                                    @Html.DropDownList("From",
+                                      null, "Chon diem den",  // property to be used as text of dropdown item
+                                                   new { @class = "form-control" })
                                 </div>
                             </div>
                             <div class="form-group">
@@ -300,7 +292,7 @@
                                     Ngay di
                                 </label>
                                 <div class="col-sm-10">
-                                    <input type="date" class="form-control" placeholder="Enter start date">
+                                    <input type="date" class="form-control" placeholder="E11dqaznter start date">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -323,8 +315,7 @@
                                 <div class="col-sm-2">
                                 </div>
                                 <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-success">
-                                        Tim chuyen bay
+                                    <button type="submit" class="btn btn-success">Tim chuyen bay
                                     </button>
                                 </div>
                             </div>
