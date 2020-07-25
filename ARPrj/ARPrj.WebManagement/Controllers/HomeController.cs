@@ -3,12 +3,17 @@ using ARPrj.WebManagement.Models;
 using System.Web.Mvc;
 using System.Linq;
 using System.Data.Entity;
+using ARPrj.DataAccess.Model;
+using ARPrj.Service;
+using Microsoft.AspNet.Identity;
 
 namespace ARPrj.WebManagement.Controllers
 {
     public class HomeController : Controller
     {
         private ARPrjEntities db = new ARPrjEntities();
+
+        protected IUserService _userManager { get; set; }
         public ActionResult Index()
         {
             ViewBag.To = new SelectList(db.Airports, "AirportId", "Name");
@@ -55,6 +60,33 @@ namespace ARPrj.WebManagement.Controllers
             ViewBag.To = new SelectList(db.Airports, "AirportId", "Name",searchModel.To);
             ViewBag.From = new SelectList(db.Airports, "AirportId", "Name",searchModel.From);
             return View("index", searchModel);
+        }
+        [HttpPost]
+        public ActionResult OrderDetail(OrderDetailViewModel orderDetail)
+        {
+            var currentUser = _userManager.GetUserById(User.Identity.GetUserId());
+            var user = new User();
+            if (currentUser != null)
+            {
+                user = db.Users.Include(x=>x.Orders).FirstOrDefault(x => x.UserName == currentUser.UserName);
+                if (user.Orders.FirstOrDefault(x=>x.OrderId==orderDetail.OrderId))
+
+            }
+
+            var order=new OrderDetail()
+            {
+                FlightId = orderDetail.FlightId,
+                PhoneNumber = orderDetail.PhoneNumber,
+                Count =orderDetail.Amount,
+                CustomerFullName = orderDetail.FullName,
+                TicketsTypeId = orderDetail?.TicketTypeId,
+            };
+
+        }
+        [HttpPost]
+        public ActionResult SubmitOrder()
+        {
+            return View("");
         }
     }
 }

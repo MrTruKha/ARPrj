@@ -7,6 +7,7 @@ using ARPrj.WebManagement.Models;
 using Microsoft.AspNet.Identity.Owin;
 using ARPrj.WebManagement.App_Start;
 using System.Web.WebPages;
+using ARPrj.DataAccess;
 using ARPrj.DataAccess.Model;
 using Microsoft.AspNet.Identity;
 
@@ -17,6 +18,7 @@ namespace PMS.Web.Controllers
         private readonly IUserService _userService;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ARPrjEntities db = new ARPrjEntities();
 
         //public AccountController(IUserService userService, ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         //{
@@ -85,6 +87,10 @@ namespace PMS.Web.Controllers
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var user = new UserCommon() {UserName=model.UserName ,Email=model.Email,FullName=model.FullName,PasswordHash=model.Password,Status=true };
+            var customer = new User() {UserName =model.UserName,Email = model.Email,IsActive = true};
+            db.Users.Add(customer);
+            db.SaveChanges();
+
             var result = _userService.AddUser(user, "Customer");
             if (result)
             {
