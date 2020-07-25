@@ -19,6 +19,8 @@ namespace ARPrj.DataAccess
         public Nullable<int> FlightId { get; set; }
         public int Count { get; set; }
         public Nullable<int> TicketsTypeId { get; set; }
+        public string CustomerFullName { get; set; }
+        public string PhoneNumber { get; set; }
     
         public virtual Flight Flight { get; set; }
         public virtual Order Order { get; set; }

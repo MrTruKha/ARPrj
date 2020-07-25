@@ -127,3 +127,10 @@ ALTER TABLE InformationFlights
 add [FlightId] int,
 FOREIGN KEY([FlightId]) REFERENCES [Flights]([FlightId]);
 
+ALTER TABLE [OrderDetail]
+add [CustomerFullName] varchar(200);
+ALTER TABLE [OrderDetail]
+add [PhoneNumber] varchar(20);
+
+ALTER TABLE InformationFlights
+add [Count] int;
