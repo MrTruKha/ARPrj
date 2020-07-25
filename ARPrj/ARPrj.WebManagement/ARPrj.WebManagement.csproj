@@ -2241,6 +2241,7 @@
     <Content Include="Assets\admin\vendors\themify-icons\ie7\ie7.js" />
     <Content Include="Assets\client\css\Home.css" />
     <Content Include="Assets\client\css\login.css" />
+    <Content Include="Assets\client\css\order.css" />
     <Content Include="Assets\client\css\SignIn.css" />
     <Content Include="Assets\client\image_icon\Home\dalat.jpg" />
     <Content Include="Assets\client\image_icon\Home\gotadi.png" />
@@ -3688,6 +3689,7 @@
     <Content Include="Views\Home\List.cshtml" />
     <Content Include="Views\Shared\_Home.cshtml" />
     <Content Include="Views\Home\AirlineList.cshtml" />
+    <Content Include="Views\Home\Order.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
