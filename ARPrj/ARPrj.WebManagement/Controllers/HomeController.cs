@@ -6,6 +6,9 @@ using System.Data.Entity;
 using ARPrj.DataAccess.Model;
 using ARPrj.Service;
 using Microsoft.AspNet.Identity;
+using Microsoft.Ajax.Utilities;
+using System.Threading.Tasks;
+using System.Configuration;
 
 namespace ARPrj.WebManagement.Controllers
 {
@@ -51,15 +54,21 @@ namespace ARPrj.WebManagement.Controllers
             return View("index", searchModel);
         }
         [HttpPost]
-        public ActionResult OrderDetail(OrderDetailViewModel orderDetail)
+        public async Task<ActionResult> OrderDetail(OrderDetailViewModel orderDetail)
         {
             var currentUser = _userManager.GetUserById(User.Identity.GetUserId());
             var user = new User();
             if (currentUser != null)
             {
-                user = db.Users.Include(x=>x.Orders).FirstOrDefault(x => x.UserName == currentUser.UserName);
-                if (user.Orders.FirstOrDefault(x=>x.OrderId==orderDetail.OrderId))
+                user = db.Users.Include(x=>x.Orders).FirstOrDefault(x => x.UserName == currentUser.UserName);             
 
+            }       
+            if (orderDetail.OrderId==0 && user!=null)
+            {
+                var orderEntity = new Order() { CustomerId = user.UserId };
+                db.Orders.Add(orderEntity);
+                db.SaveChanges();
+                orderDetail.OrderId = orderEntity.OrderId;
             }
 
             var order=new OrderDetail()
@@ -69,8 +78,20 @@ namespace ARPrj.WebManagement.Controllers
                 Count =orderDetail.Amount,
                 CustomerFullName = orderDetail.FullName,
                 TicketsTypeId = orderDetail?.TicketTypeId,
+                OrderId=user!=null?orderDetail.OrderId:0
             };
-
+            db.OrderDetails.Add(order);
+            db.SaveChanges();
+            string content = "You are tasked:<br /> " +
+                                 
+                                  "";
+            await EmailService.SendEmailAsync(
+                ConfigurationManager.AppSettings["SystemEmail"],
+                ConfigurationManager.AppSettings["SystemEmailPassword"],
+                ConfigurationManager.AppSettings["SystemEmailSmtp"],
+                ConfigurationManager.AppSettings["SystemEmailSmtpPort"],
+                user.Email, user.UserName, content);
+            return View();
         }
         [HttpPost]
         public ActionResult SubmitOrder()
