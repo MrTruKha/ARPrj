@@ -3685,6 +3685,9 @@
     <Content Include="Views\InformationFlights\Edit.cshtml" />
     <Content Include="Views\InformationFlights\Index.cshtml" />
     <Content Include="Views\Home\_partialView\_PartialFlights.cshtml" />
+    <Content Include="Views\Home\List.cshtml" />
+    <Content Include="Views\Shared\_Home.cshtml" />
+    <Content Include="Views\Home\AirlineList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

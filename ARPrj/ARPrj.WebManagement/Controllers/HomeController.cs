@@ -32,6 +32,17 @@ namespace ARPrj.WebManagement.Controllers
             return View();
         }
 
+        public ActionResult List()
+        {
+            return View();
+        }
+
+        public ActionResult AirlineList()
+        {
+            var flights = db.Flights.Include(f => f.Airline).Include(f => f.Airport).Include(f => f.Airport1);
+            return View(flights.ToList());
+        }
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
@@ -42,10 +53,10 @@ namespace ARPrj.WebManagement.Controllers
         public ActionResult SearchFlights([Bind(Include = "From,To,DepartureDate,Amount")]SearchResultViewModel searchModel)
         {
             var flights = db.Flights.Include(f => f.Airline).Include(f => f.Airport).Include(f => f.Airport1)
-                .Where(x => x.DepartureDay.Value.Year == searchModel.DepartureDate.Year
-                            && x.DepartureDay.Value.Month == searchModel.DepartureDate.Month
-                            && x.DepartureDay.Value.Day == searchModel.DepartureDate.Day)
-                .Where(x => x.SeatsLeft.Value >= searchModel.Amount)
+                //.Where(x => x.DepartureDay.Value.Year == searchModel.DepartureDate.Year
+                //            && x.DepartureDay.Value.Month == searchModel.DepartureDate.Month
+                //            && x.DepartureDay.Value.Day == searchModel.DepartureDate.Day)
+                //.Where(x => x.SeatsLeft.Value >= searchModel.Amount)
                 .Where(x => x.Airport.AirportId == searchModel.To)
                 .Where(x => x.Airport1.AirportId == searchModel.From);
             searchModel.Flights = flights.ToList();

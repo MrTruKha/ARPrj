@@ -1,0 +1,243 @@
+﻿@using ARPrj.DataAccess
+@model ARPrj.WebManagement.Models.SearchResultViewModel
+
+@if (Model != null)
+{
+    if (Model.Flights == null)
+    {
+        Model.Flights = new List<Flight>();
+    }
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+          crossorigin="anonymous">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="~/Assets/client/css/Home.css" rel="stylesheet" />
+
+</head>
+<div class="row">
+    <div class="col-md-12 col-lg-1 col-xs-12"></div>
+    <div class="col-md-12 col-lg-3 col-xs-12">
+        <img style="height: 100px" src="~/Assets/client/image_icon/Home/gotadi.png" alt="">
+    </div>
+    <div class="col-md-12 col-lg-1 col-xs-12"></div>
+    <div class="col-md-12 col-lg-7 col-xs-12">
+        <div class="abc row">
+            <div class="col-lg-3 col-sm-3 col-xs-3">
+                <div class="phone row">
+                    <div class="col-lg-1"><i class="fas fa-briefcase"></i></div>
+                    <div class="col-lg-10">
+                        Tro thanh doi tac
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-3 col-xs-3">
+                <div class="mail row">
+                    <div class="col-lg-1"><i class="far fa-handshake"></i></div>
+                    <div class="col-lg-9">
+                        Lien ket hop tac
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-3 col-xs-3">
+                <button class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                    Tai khoan
+                </button>
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header row">
+                                <div class="col-lg-8">
+                                    <h4 class="modal-title" style="margin-right: 20px">Login and Register</h4>
+                                </div>
+                                <div class="col-lg-2">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        ×
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-8" style="padding-right: 30px;">
+                                        <!-- Nav tabs -->
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#Login" data-toggle="tab">Login</a></li>
+                                            <li><a href="#Registration" data-toggle="tab">Registration</a></li>
+                                        </ul>
+                                        <!-- Tab panes -->
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="Login">
+                                                <form role="form" class="form-horizontal">
+                                                    <div class="form-group">
+                                                        <label for="email" class="col-sm-2 control-label">
+                                                            Email
+                                                        </label>
+                                                        <div class="col-sm-10">
+                                                            <input type="email" class="form-control" id="email1" placeholder="Email" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleInputPassword1" class="col-sm-2 control-label">
+                                                            Password
+                                                        </label>
+                                                        <div class="col-sm-10">
+                                                            <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Email" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-2">
+                                                        </div>
+                                                        <div class="col-sm-10">
+                                                            <button type="submit" class="btn btn-primary btn-sm">
+                                                                Submit
+                                                            </button>
+                                                            <a href="javascript:;">Forgot your password?</a>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="tab-pane" id="Registration">
+                                                <form role="form" class="form-horizontal">
+                                                    <div class="form-group">
+                                                        <label for="email" class="col-sm-2 control-label">
+                                                            Name
+                                                        </label>
+                                                        <div class="col-sm-10">
+                                                            <div class="row">
+                                                                <div class="col-md-3">
+                                                                    <select class="form-control">
+                                                                        <option>Mr.</option>
+                                                                        <option>Ms.</option>
+                                                                        <option>Mrs.</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-md-9">
+                                                                    <input type="text" class="form-control" placeholder="Name" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="email" class="col-sm-2 control-label">
+                                                            Email
+                                                        </label>
+                                                        <div class="col-sm-10">
+                                                            <input type="email" class="form-control" id="email" placeholder="Email" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="phone" class="col-sm-2 control-label">
+                                                            Phone
+                                                        </label>
+                                                        <div class="col-sm-10">
+                                                            <input type="email" class="form-control" id="phone" placeholder="Phone" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="password" class="col-sm-2 control-label">
+                                                            Password
+                                                        </label>
+                                                        <div class="col-sm-10">
+                                                            <input type="password" class="form-control" id="password" placeholder="Password" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-2">
+                                                        </div>
+                                                        <div class="col-sm-10">
+                                                            <button type="button" class="btn btn-primary btn-sm">
+                                                                Save & Continue
+                                                            </button>
+                                                            <button type="button" class="btn btn-default btn-sm">
+                                                                Cancel
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr>
+<div class="menu">
+    <ul>
+        <i class="fas fa-home home"></i>
+        <li><a href="/homepage">Trang chu</a></li>
+        <li><a href="/contactUs">Ve may bay</a></li>
+        <li><a href="/feedback">Thanh toan</a></li>
+        <li><a href="/aboutUs">ABOUT US</a></li>
+        <li><a href="/register">Dang ky</a></li>
+        <li><a href="/login">dang nhap</a></li>
+    </ul>
+</div>
+
+@RenderBody()
+
+
+<hr>
+<!-- Footer -->
+<footer class="">
+
+    <hr>
+
+    <!-- Social buttons -->
+    <ul class="list-unstyled list-inline text-center">
+        <li class="list-inline-item">
+            <a class="btn-floating btn-fb mx-1">
+                <i class="fab fa-facebook-f"> </i>
+            </a>
+        </li>
+        <li class="list-inline-item">
+            <a class="btn-floating btn-tw mx-1">
+                <i class="fab fa-twitter"> </i>
+            </a>
+        </li>
+        <li class="list-inline-item">
+            <a class="btn-floating btn-gplus mx-1">
+                <i class="fab fa-google-plus-g"> </i>
+            </a>
+        </li>
+        <li class="list-inline-item">
+            <a class="btn-floating btn-li mx-1">
+                <i class="fab fa-linkedin-in"> </i>
+            </a>
+        </li>
+        <li class="list-inline-item">
+            <a class="btn-floating btn-dribbble mx-1">
+                <i class="fab fa-dribbble"> </i>
+            </a>
+        </li>
+    </ul>
+    <!-- Social buttons -->
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">
+        © 2020 Copyright:
+        <a href="https://mdbootstrap.com/"> T1811E</a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
+

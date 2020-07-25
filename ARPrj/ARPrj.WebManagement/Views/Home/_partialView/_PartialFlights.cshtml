@@ -1,4 +1,7 @@
 ﻿@model List<ARPrj.DataAccess.Flight>
+    @*@{
+        Layout = "~/Views/Shared/_Home.cshtml";
+    }*@
     <div class="container-fluid">
         @foreach (var item in Model)
         {
@@ -14,7 +17,7 @@
                                 <span>@item.DepartureTime</span>
                             </div>
                             <div class="col-lg-2">
-                                <span>---------</span>
+                                <span>------</span>
                             </div>
                             <div class="col-lg-2">
                                 <span>@item.ArrivalTime</span>
@@ -28,17 +31,17 @@
                                 <span>@item.Airport.Name</span>
                             </div>
                             <div class="col-lg-2">
-                                <span>@item.From</span>
+                                <span>@item.Airport.Name</span>
                             </div>
                             <div class="col-lg-2">
                                 <span>bay thang</span>
                             </div>
                             <div class="col-lg-2">
-                                <span>@item.To</span>
+                                <span>@item.Airport1.Name</span>
                             </div>
                         </div>
 
-                        <div class="row" style="margin-top: 24px">
+                        @*<div class="row" style="margin-top: 24px">
                             <div class="col-lg-2">
                                 <img src="https://www.abay.vn/Images/Icon/Flight/Airline/AirlineLogo/smVJ_Full.gif" alt=""
                                      height="22px">
@@ -74,14 +77,14 @@
                             <div class="col-lg-2">
                                 <span>2h 10m</span>
                             </div>
-                        </div>
+                        </div>*@
 
                     </div>
-                    <div style="width: 1px;height: 129px;
+                    <div style="width: 1px;height: 90px;
     background-color:#19101014;
     position:absolute;
     right:400px">&nbsp;</div>
-                    <div class="col-lg-3" style="margin-top:21px">
+                    <div class="col-lg-3" style="margin-top:19px">
                         <div class="row">
                             <span>@item.Airline.NetPrice</span>
                         </div>
