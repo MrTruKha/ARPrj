@@ -1,4 +1,5 @@
-﻿@{ 
+﻿@model IEnumerable<ARPrj.DataAccess.Flight>
+@{
     Layout = null;
 }
 <!DOCTYPE html>
@@ -17,86 +18,213 @@
     <link href="~/Assets/client/css/a.css" rel="stylesheet" />
     <link href="~/Assets/client/css/layout.css" rel="stylesheet" />
     <link href="~/Assets/client/css/Home.css" rel="stylesheet" />
+    <link href="~/Assets/client/css/booking.css" rel="stylesheet" />
 </head>
 
 <body class="landing-page sidebar-collapse">
-    @*<nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
-        <div class="container">
-            <div class="navbar-translate">
-                <a class="navbar-brand">
-                    <img style="width:250px" src="https://www.gotadi.com/assets/images/logo.svg" alt="">
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="navbar-toggler-icon"></span>
-                    <span class="navbar-toggler-icon"></span>
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
+            <div class="container">
+                <div class="navbar-translate">
+                    <a class="navbar-brand">
+                        <img style="width:250px" src="https://www.gotadi.com/assets/images/logo.svg" alt="">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="navbar-toggler-icon"></span>
+                        <span class="navbar-toggler-icon"></span>
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-cart-plus"></i> Cart
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-cart-plus"></i> Cart
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>*@
+        </nav>
     <div class="page-header header-filter" data-parallax="true" style="background-image: url('https://demos.creative-tim.com/material-kit/assets/img/profile_city.jpg')">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <h1 class="title">Your Story Starts With Us.</h1>
-                    <h4>Every landing page needs a small description after the big bold title, that&apos;s why we added this text here. Add here all the information that can make you or your product create the first impression.</h4>
-                    <br>
-                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="btn btn-danger btn-raised btn-lg">
-                        <i class="fa fa-play"></i> Watch video
-                    </a>
+                <div class="booking-form">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="form-label">Flying from</span>
+                                    <input class="form-control" type="text" placeholder="City or airport">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="form-label">Flying to</span>
+                                    <input class="form-control" type="text" placeholder="City or airport">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <span class="form-label">Departing</span>
+                                    <input class="form-control" type="date" required>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <span class="form-label">Returning</span>
+                                    <input class="form-control" type="date" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <span class="form-label">Number Ticket</span>
+                                    <input type="number" name="Amount" class="form-control" required min="1" step="1" placeholder="Enter number ticket">
+                                    <span class="select-arrow"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <span class="form-label">Aiport</span>
+                                    <select class="form-control">
+                                        <option>Economy class</option>
+                                        <option>Business class</option>
+                                        <option>First class</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-btn">
+                                    <button class="submit-btn">Show flights</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="main main-raised">
         <div class="container">
             <div class="section text-center">
+                <h2 class="title ">Ve may bay khuyen mai</h2>
                 <div class="row">
-                    <div class="col-md-8 ml-auto mr-auto">
-                        <h2 class="title">Let&apos;s talk product</h2>
-                        <h5 class="description">This is the paragraph where you can write more details about your product. Keep you user engaged by providing meaningful information. Remember that by this time, the user is curious, otherwise he wouldn&apos;t scroll to get here. Add a button if you want the user to see more.</h5>
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="col-lg-2">
+                                    <img src="https://www.abay.vn/Images/Icon/Flight/Airline/AirlineLogo/smVJ_Full.gif" alt=""
+                                         height="22px" style="margin-left:201px">
+                                </div>
+                                <div class="row">
+                                    <p>Tu Ho Chi Minh</p>
+                                </div>
+                                <div class="row">
+                                    <strong>Ha Noi</strong>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">26/7/2020</div>
+                                    <div class="col-lg-4">----</div>
+                                    <div class="col-lg-4">26/7/2020</div>
+                                </div>
+                            </div>
+                            <div class="card-footer text-muted">
+                                2.000.000
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="col-lg-2">
+                                    <img src="https://www.abay.vn/Images/Icon/Flight/Airline/AirlineLogo/smVJ_Full.gif" alt=""
+                                         height="22px" style="margin-left:201px">
+                                </div>
+                                <div class="row">
+                                    <p>Tu Ho Chi Minh</p>
+                                </div>
+                                <div class="row">
+                                    <strong>Ha Noi</strong>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">26/7/2020</div>
+                                    <div class="col-lg-4">----</div>
+                                    <div class="col-lg-4">26/7/2020</div>
+                                </div>
+                            </div>
+                            <div class="card-footer text-muted">
+                                2.000.000
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="col-lg-2">
+                                    <img src="https://www.abay.vn/Images/Icon/Flight/Airline/AirlineLogo/smVJ_Full.gif" alt=""
+                                         height="22px" style="margin-left:201px">
+                                </div>
+                                <div class="row">
+                                    <p>Tu Ho Chi Minh</p>
+                                </div>
+                                <div class="row">
+                                    <strong>Ha Noi</strong>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">26/7/2020</div>
+                                    <div class="col-lg-4">----</div>
+                                    <div class="col-lg-4">26/7/2020</div>
+                                </div>
+                            </div>
+                            <div class="card-footer text-muted">
+                                2.000.000
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="features">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="info">
                                 <div class="icon icon-info">
-                                    <img src="https://static2.gotadi.com/web/icons/price.png"
-                                         class="rounded-circle" alt="" width="100px" height="100px">
+                                    <img src="https://vietair.com.vn/Images/Desktop/Views/Home/Index/247.png">
                                 </div>
-                                <h4 class="info-title">Cam ket gia luon re</h4>
-                                <p>Gia ve may bay va phong khach san trong nuoc va quoc te</p>
+                                <h4 class="info-title">Ho tro 24/7</h4>
+                                <p>Chỉ với một cú nhấp chuột, dễ dàng so sánh các chuyến bay giữa các hãng</p>
+
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="info">
                                 <div class="icon icon-success">
-                                    <img src="https://static2.gotadi.com/web/icons/support.png"
-                                         class="rounded-circle" alt="" width="100px" height="100px">
+                                    <img src="https://vietair.com.vn/Images/Desktop/Views/Home/Index/100percent.png">
                                 </div>
-                                <h4 class="info-title">Dich vu khach hang tan tinh</h4>
-                                <p>Tong dai ho tro va cham soc khach hang 24/7</p>
+                                <h4 class="info-title">Gia ve tot nhat</h4>
+                                <p>Bay khắp mọi nơi với giá cực rẻ</p>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="info">
                                 <div class="icon icon-danger">
-                                    <img src="https://static2.gotadi.com/web/icons/payment.png"
-                                         class="rounded-circle" alt="" width="100px" height="100px">
+                                    <img src="https://vietair.com.vn/Images/Desktop/Views/Home/Index/pay.png">
                                 </div>
-                                <h4 class="info-title">Da dang phuong thuc thanh toan</h4>
-                                <p>Thanh toan de dang, an toan tuyet doi</p>
+                                <h4 class="info-title">Thanh toan tien loi</h4>
+                                <p>Hệ thống đặt chỗ và thanh toán tiện lợi và uy tín</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="info">
+                                <div class="icon icon-danger">
+                                    <img src="https://vietair.com.vn/Images/Desktop/Views/Home/Index/bao-mat.png">
+                                </div>
+                                <h4 class="info-title">Chinh sach bao mat</h4>
+                                <p>Giá vé được đảm bảo theo thanh toán đã xác nhận, yêu cầu đặt chỗ được đảm bảo khi vé được xuất</p>
                             </div>
                         </div>
                     </div>
@@ -104,7 +232,7 @@
             </div>
             <div class="section text-center">
                 <h2 class="title">Uu dai ngay hom nay</h2>
-                <div id="carousel-example" class="carousel slide hidden-xs" data-ride="carousel">
+                <div id="carousel-example" class="carousel slide" data-ride="carousel">
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner">
                         <div class="item active">
@@ -145,21 +273,38 @@
                     </div>
                 </div>
             </div>
-            <div class="container gift" style="margin-top:20px">
+            <div class="container gift" >
                 <div class="jumbotron">
                     <div class="row">
                         <div class="col-lg-3">
                             <img src="https://www.gotadi.com/assets/images/member-gtd.svg" alt="">
                         </div>
                         <div class="col-lg-7">
-                            <h2>Chi danh rieng cho thanh vien gotadi</h2>
+                            <h2>Chi danh rieng cho thanh vien AR</h2>
                             <span>Quản lý giao dịch, lưu danh sách hành khách thường xuyên, thông báo nhắc nhở hành trình, hưởng nhiều ưu đãi độc quyền chỉ khi tham gia cùng chúng tôi.</span>
                         </div>
                         <div class="col-lg-1">
                             <button type="button" class="btn btn-success">Dang ky</a></button>
                         </div>
-                    
+
                     </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="jumbotron">
+                    <h3>Tìm và mua vé máy bay giá rẻ trên Etrip4u.com</h3>
+                    <span>
+                        Etrip4u.com nỗ lực hết mình để hỗ trợ quý khách tìm được những lựa chọn vé máy bay tốt
+                        nhất, hệ thống tổng hợp vé máy bay khuyến mại của tất cả các hãng hàng không tới các địa
+                        điểm trên khắp Thế Giới.
+                    </span> </br>
+                    </br>
+                    <h3>Ưu đãi chuyến bay giá rẻ với etrip4u.com trên toàn Thế Giới</h3>
+                    <span>
+                        Etrip4u hợp tác chặt chẽ với các hãng hàng không lớn trên khắp mọi Châu lục.
+                        Mua vé máy bay thật dễ dàng với Etrip4u.com.
+                    </span>
                 </div>
             </div>
             <div class="section section-contacts">
@@ -203,11 +348,7 @@
         <div class="container">
             <nav class="float-left">
                 <ul>
-                    <li>
-                        <a href="https://www.creative-tim.com/">
-                            Creative Tim
-                        </a>
-                    </li>
+                    
                     <li>
                         <a href="https://www.creative-tim.com/presentation">
                             About Us
@@ -215,22 +356,18 @@
                     </li>
                     <li>
                         <a href="https://www.creative-tim.com/blog">
-                            Blog
+                            Contact us
                         </a>
                     </li>
-                    <li>
-                        <a href="https://www.creative-tim.com/license">
-                            Licenses
-                        </a>
-                    </li>
+                    
                 </ul>
             </nav>
             <div class="copyright float-right">
                 &copy;
                 <script>
                     document.write(new Date().getFullYear())
-                </script>, made with <i class="material-icons">favorite</i> by
-                <a href="https://www.creative-tim.com/" target="_blank">Creative Tim</a> for a better web.
+                </script>, made with by
+                <a href="https://www.creative-tim.com/" target="_blank">T1811E</a>
             </div>
         </div>
     </footer>
