@@ -37,7 +37,10 @@ namespace ARPrj.WebManagement.Controllers
             return View();
         }
 
-
+        public ActionResult BookingFlight()
+        {
+            return View();
+        }
         public ActionResult Order()
         {
             var flights = db.Flights.Include(f => f.Airline).Include(f => f.Airport).Include(f => f.Airport1);
@@ -70,6 +73,30 @@ namespace ARPrj.WebManagement.Controllers
             ViewBag.From = new SelectList(db.Airports, "AirportId", "Name",searchModel.From);
             return View("index", searchModel);
         }
+
+        [HttpPost]
+        public ActionResult OrderDetail(OrderDetailViewModel orderDetail)
+        {
+            var currentUser = _userManager.GetUserById(User.Identity.GetUserId());
+            var user = new User();
+            if (currentUser != null)
+            {
+                user = db.Users.Include(x => x.Orders).FirstOrDefault(x => x.UserName == currentUser.UserName);
+                if (user.Orders.FirstOrDefault(x => x.OrderId == orderDetail.OrderId))
+
+            }
+
+            var order = new OrderDetail()
+            {
+                FlightId = orderDetail.FlightId,
+                PhoneNumber = orderDetail.PhoneNumber,
+                Count = orderDetail.Amount,
+                CustomerFullName = orderDetail.FullName,
+                TicketsTypeId = orderDetail?.TicketTypeId,
+            };
+
+        }
+
         [HttpPost]
         public async Task<ActionResult> OrderDetail(OrderDetailViewModel orderDetail)
         {
@@ -110,6 +137,7 @@ namespace ARPrj.WebManagement.Controllers
                 user.Email, user.UserName, content);
             return View();
         }
+
         [HttpPost]
         public ActionResult SubmitOrder()
         {

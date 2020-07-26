@@ -2239,7 +2239,10 @@
     <Content Include="Assets\admin\vendors\themify-icons\fonts\themify.svg" />
     <Content Include="Assets\admin\vendors\themify-icons\ie7\ie7.css" />
     <Content Include="Assets\admin\vendors\themify-icons\ie7\ie7.js" />
+    <Content Include="Assets\client\css\a.css" />
+    <Content Include="Assets\client\css\booking.css" />
     <Content Include="Assets\client\css\Home.css" />
+    <Content Include="Assets\client\css\layout.css" />
     <Content Include="Assets\client\css\login.css" />
     <Content Include="Assets\client\css\order.css" />
     <Content Include="Assets\client\css\SignIn.css" />
@@ -3690,6 +3693,7 @@
     <Content Include="Views\Shared\_Home.cshtml" />
     <Content Include="Views\Home\AirlineList.cshtml" />
     <Content Include="Views\Home\Order.cshtml" />
+    <Content Include="Views\Home\BookingFlight.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
