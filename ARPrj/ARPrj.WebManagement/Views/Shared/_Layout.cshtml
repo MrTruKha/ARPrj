@@ -1,42 +1,249 @@
 ﻿<!DOCTYPE html>
+
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="~/Assets/client/js/jquery-3.3.1.min.js"></script>
+
+    <script src="~/Assets/client/js/angular.min.js"></script>
+    <script src="~/Assets/client/js/angular-sanitize.js"></script>
+    <script src="~/Assets/client/jsController/mainController.js"></script>
+
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>@ViewBag.Title</title>
+
+
+    <link href="@Url.Content("~/Assets/client/css/Home.css")" rel="stylesheet" />
+    <link rel="stylesheet" href="@Url.Content("https://use.fontawesome.com/releases/v5.8.1/css/all.css")" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="@Url.Content("~/bower_components/boostrap/dist/css/bootstrap.min.css")" rel="stylesheet" />
+    <link href="~/Assets/client/css/TaoDH1.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <div ng-app="myApp">
+        <!-- header -->
+        <header>
+            <div class="container-fluid">
+                <div class="container ">
+                    <nav class="navbar navbar-expand-lg">
+                        <a class="navbar-brand" href="#">
+                            @*<img src="~/Assets/client/image_icon/xd/DESIGNED BY FREEPIK.png" alt="logo">*@
+                            <img src="../../../Assets/admin/images/Asset 2.png" alt="logo" class="logo" />
+                            @*<img src="~/Assets/admin/images/logo.png" />*@
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="mx-2">
+                                    <a href="">
+                                        <img src="~/Assets/client/image_icon/icon_kit/Notifications@2x.png" alt="Notification" width="60%">
+                                    </a>
+                                </li>
+                                <li class="mx-2">
+                                    <a href="/ThongTinKhachhang/ThongTinCaNhan">
+                                        <img src="~/Assets/client/image_icon/icon_kit/user.png" alt="Personal " width="80%">
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+        </header>
+
+
+        <!-- menu -->
+        @*<div class="menu">
+                <div class="container ">
+                    <nav class="navbar navbar-expand-lg">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto ">
+                                <li class="nav-item active mx-3">
+                                    <a class="nav-link dh nav_link_active" @Html.ActionLink("Home", "Index", "Client") <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item active mx-3">
+                                    <a class="nav-link dh" @Html.ActionLink("Tin Tức", "TinTuc", "Client") <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item active mx-3">
+                                    <a class="nav-link dh" @Html.ActionLink("Nhà Xe", "NhaXe", "Client") <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item active mx-3">
+                                    <a class="nav-link dh" @Html.ActionLink("Bảng Giá", "BangGia", "Client") <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item active mx-3">
+                                    <a class="nav-link dh" @Html.ActionLink("Đơn Hàng", "DonHang", "Client") <span class="sr-only">(current)</span></a>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <div class="text-center mx-4">
+                            <a class="dh " href="">
+                                <img src="~/Assets/client/image_icon/icon_kit/tra_cuoc.png" alt="img">
+                                <div>
+                                    Tra cứu đơn
+                                </div>
+                            </a>
+                        </div>
+                    </nav>
+                </div>
+            </div>*@
+
+
+        <div class="menu">
+            <div class="container ">
+                <nav class="navbar navbar-expand-lg p-0">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto ">
+                            <li class="nav-item mx-3">
+                                <a class="nav-link py-3 dh" href="/"><img src="~/Assets/client/image_icon/xd/Path 755-1.png"><span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item mx-3">
+                                <a class="nav-link py-3 dh " href="/Client/TinTuc">Tin Tức <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item mx-3">
+                                <a class="nav-link py-3 dh" href="/Client/NhaXe">Nhà Xe <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item mx-3">
+                                <a class="nav-link py-3 dh" href="/Client/BangGia">Bảng Giá <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item mx-3">
+                                <div class="dropdown">
+                                    <a href="/" class="dropbtn nav-link dh " style="background: #006F8F;   border:1px solid #006F8F">Đơn hàng<i class="fas fa-caret-down pl-2 "></i></a>
+                                    <div class="dropdown-content border">
+                                        <a href="/TaoDon/TaoDon1">Tạo đơn hàng</a>
+                                        <a href="/TaoDon/DSDH">Xem danh sách đơn hàng</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <div class="text-center mx-4">
+                        <a class="dh " href="/Client/TraCuuDH">
+                            <div style="text-decoration: none;">
+                                Tra cứu đơn
+                            </div>
+                        </a>
+                    </div>
+                </nav>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
+
+
+
+
+
+
+
         @RenderBody()
-        <hr />
+
+        <!-- footer -->
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <div class="container">
+                <div class="row text-light pt-5">
+                    <div class="col-md-3 col-12">
+                        <h6>HỖ TRỢ KHÁCH HÀNG</h6>
+                        <p style="font-size: 12px;line-height: 2;">
+                            Hotline: 1900 1000 <br>
+                            Tổng đài tư vấn: 1900 1000 <br>
+                            Các câu hỏi thường gặp<br>
+                            Gửi yêu cầu hỗ trợ<br>
+                            Hướng dẫn tạo đơn hàng<br>
+                            Phương thức vận chuyển<br>
+                        </p>
+                    </div>
+                    <div class="col-md-3 col-12">
+                        <h6>VỀ PICKUP</h6>
+                        <p style="font-size: 12px;line-height: 2;">
+                            Giới thiệu về dịch vụ Pickup <br>
+                            Tuyển dụng <br>
+                            Chính sách bảo mật và thanh toán<br>
+                            Chính sách bảo mật thông tin cá nhân<br>
+                            Chính sách giải quyết khiếu nại<br>
+                            Điều khoản sử dụng<br>
+                            Giới thiệu về Pickup xu<br>
+                            Pickup tư vấn<br>
+                        </p>
+                    </div>
+                    <div class="col-md-3 col-12">
+                        <h6>HỢP TÁC VÀ LIÊN KẾT</h6>
+                        <p style="font-size: 12px;line-height: 2;">
+                            Quy chế hoạt động<br>
+                            Trở thành đối tác<br>
+                        </p>
+                        <div>
+                            <h6>PHƯƠNG THỨC THANH TOÁN</h6>
+                            <img src="~/Assets/client/image_icon/images/Group 768.png" class="m-1">
+                            <img src="~/Assets/client/image_icon/images/Group 769.png" class="m-1">
+                            <img src="~/Assets/client/image_icon/images/Group 770.png" class="m-1">
+                            <img src="~/Assets/client/image_icon/images/Group 771.png" class="m-1">
+                            <img src="~/Assets/client/image_icon/images/Group 772.png" class="m-1">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-12">
+                        <h6>KẾT NỐI VỚI CHÚNG TÔI</h6>
+                        <img src="~/Assets/client/image_icon/images/instagram.png" class="m-2">
+                        <img src="~/Assets/client/image_icon/images/twitter.png" class="m-3">
+                        <img src="~/Assets/client/image_icon/images/facebook.png" class="m-3">
+                        <img src="~/Assets/client/image_icon/images/web.png" class="m-3">
+                        <div>
+                            <input type="email" name="email" placeholder="Email" class="border rounded-left px-2">
+                            <button style="margin-left: -10px;color: white" class="rounded-right border"><img src="~/Assets/client/image_icon/images/send.png" class="px-1"></button>
+                            <p style="font-size: 12px" class="mt-2">Stay in touch with us for the freshest products!</p>
+                        </div>
+                        <div>
+                            <h6>TẢI ỨNG DỤNG TRÊN ĐIỆN THOẠI</h6>
+                            <div class="text-center">
+                                <img src="~/Assets/client/image_icon/images/Mask Group 61.png" class="mt-2" width="60%">
+                                <img src="~/Assets/client/image_icon/images/Mask Group 62.png" class="mt-2" width="60%">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div>
+                            <img src="~/Assets/client/image_icon/images/Path 933.png">
+                        </div>
+                        <p style="font-size: 12px">
+                            Công ty Cổ phần Pickup<br>
+                            Địa chỉ văn phòng : 100 Trần Phú - Hà Đông - Hà Nội
+                        </p>
+                    </div>
+                </div>
+            </div>
         </footer>
+
+
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+
+
+    <script src="@Url.Content("https://code.jquery.com/jquery-3.3.1.slim.min.js")" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    @*<script src="~/bower_components/slim-scroll/dist/slimscroll.min.js"></script>*@
+
+
+    <script src="@Url.Content("~/bower_components/boostrap/dist/js/bootstrap.min.js")"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+
+
+
+    <script src="@Url.Content("https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js")" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    @*<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>*@
+
 </body>
 </html>
