@@ -17,6 +17,8 @@ namespace ARPrj.WebManagement.Controllers
         private ARPrjEntities db = new ARPrjEntities();
 
         protected IUserService _userManager { get; set; }
+
+
         public ActionResult Index()
         {
             ViewBag.To = new SelectList(db.Airports, "AirportId", "Name");

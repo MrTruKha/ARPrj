@@ -120,7 +120,7 @@ add [ArrivalDay] Date;
 
 
 
-alter table [Flights] drop constraint FK__Flights__Informa__3E52440B;
+alter table [Flights] drop constraint FK__Flights__Informa__173876EA;
 alter table [Flights] drop column InformationFlightID;
 
 ALTER TABLE InformationFlights

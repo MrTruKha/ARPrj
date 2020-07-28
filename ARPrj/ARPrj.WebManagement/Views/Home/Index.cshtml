@@ -11,164 +11,302 @@
     }
 }
 
+
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <title>Bootstrap Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <title>
+        Dat Ve May Bay Online
+    </title>
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
           crossorigin="anonymous">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="~/Assets/client/css/a.css" rel="stylesheet" />
+    <link href="~/Assets/client/css/layout.css" rel="stylesheet" />
     <link href="~/Assets/client/css/Home.css" rel="stylesheet" />
-
+    <link href="~/Assets/client/css/booking.css" rel="stylesheet" />
 </head>
-<div class="row">
-    <div class="col-md-12 col-lg-1 col-xs-12"></div>
-    <div class="col-md-12 col-lg-3 col-xs-12">
-        <img style="height: 100px" src="~/Assets/client/image_icon/Home/gotadi.png" alt="">
-    </div>
-    <div class="col-md-12 col-lg-1 col-xs-12"></div>
-    <div class="col-md-12 col-lg-7 col-xs-12">
-        <div class="abc row">
-            <div class="col-lg-3 col-sm-3 col-xs-3">
-                <div class="phone row">
-                    <div class="col-lg-1"><i class="fas fa-briefcase"></i></div>
-                    <div class="col-lg-10">
-                        Tro thanh doi tac
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-3 col-xs-3">
-                <div class="mail row">
-                    <div class="col-lg-1"><i class="far fa-handshake"></i></div>
-                    <div class="col-lg-9">
-                        Lien ket hop tac
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-lg-3 col-sm-3 col-xs-3">
-                <button class="btn btn-success" data-toggle="modal" data-target="#myModal">
-                    Tai khoan
-                </button>
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header row">
-                                <div class="col-lg-8">
-                                    <h4 class="modal-title" style="margin-right: 20px">Login and Register</h4>
-                                </div>
-                                <div class="col-lg-2">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                        ×
-                                    </button>
+<body class="landing-page sidebar-collapse">
+    <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
+        <div class="container">
+            <div class="navbar-translate">
+                <a class="navbar-brand">
+                    <img style="width:250px" src="https://www.gotadi.com/assets/images/logo.svg" alt="">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="Home/AirlineList" class="nav-link">
+                            Ve may bay
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../Account/Login" class="nav-link">
+                            Dang nhap
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../Account/Register" class="nav-link">
+                            Dang ky
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header header-filter" data-parallax="true" style="background-image: url('https://demos.creative-tim.com/material-kit/assets/img/profile_city.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="booking-form">
+                    <form role="form" method="post" action="@Url.Action("SearchFlights", "Home")" class="form-horizontal">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="form-label">Flying from</span>
+                                    @Html.DropDownList("To",
+                                           null, "Chon diem di",  // property to be used as text of dropdown item
+                                                        new { @class = "form-control" })
                                 </div>
                             </div>
-                            <div class="modal-body">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="form-label">Flying to</span>
+                                    @Html.DropDownList("From",
+                                         null, "Chon diem den",  // property to be used as text of dropdown item
+                                                      new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <span class="form-label">Departing</span>
+                                    <input class="form-control" type="date" required>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <span class="form-label">Returning</span>
+                                    <input class="form-control" type="date" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <span class="form-label">Number Ticket</span>
+                                    <input type="number" name="Amount" class="form-control" required min="1" step="1" placeholder="Enter number ticket">
+                                    <span class="select-arrow"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <span class="form-label">Aiport</span>
+                                    <select class="form-control">
+                                        <option>Thuong gia</option>
+                                        <option>Pho thong</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-btn">
+                                    <button class="submit-btn">Show flights</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main main-raised">
+        <div class="container">
+            @if (Model != null)
+            {
+                if (Model.Flights.Count > 0)
+                {
+                        @Html.Partial("~/Views/Home/_partialView/_PartialFlights.cshtml", Model.Flights)
+                }
+            }
+
+            <div class="section text-center">
+                <h2 class="title ">Ve may bay khuyen mai</h2>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="col-lg-2">
+                                    <img src="https://www.abay.vn/Images/Icon/Flight/Airline/AirlineLogo/smVJ_Full.gif" alt=""
+                                         height="22px" style="margin-left:201px">
+                                </div>
                                 <div class="row">
-                                    <div class="col-md-8" style="padding-right: 30px;">
-                                        <!-- Nav tabs -->
-                                        <ul class="nav nav-tabs">
-                                            <li class="active"><a href="#Login" data-toggle="tab">Login</a></li>
-                                            <li><a href="#Registration" data-toggle="tab">Registration</a></li>
-                                        </ul>
-                                        <!-- Tab panes -->
-                                        <div class="tab-content">
-                                            <div class="tab-pane active" id="Login">
-                                                <form role="form" class="form-horizontal">
-                                                    <div class="form-group">
-                                                        <label for="email" class="col-sm-2 control-label">
-                                                            Email
-                                                        </label>
-                                                        <div class="col-sm-10">
-                                                            <input type="email" class="form-control" id="email1" placeholder="Email" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="exampleInputPassword1" class="col-sm-2 control-label">
-                                                            Password
-                                                        </label>
-                                                        <div class="col-sm-10">
-                                                            <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Email" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-sm-2">
-                                                        </div>
-                                                        <div class="col-sm-10">
-                                                            <button type="submit" class="btn btn-primary btn-sm">
-                                                                Submit
-                                                            </button>
-                                                            <a href="javascript:;">Forgot your password?</a>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="tab-pane" id="Registration">
-                                                <form role="form" class="form-horizontal">
-                                                    <div class="form-group">
-                                                        <label for="email" class="col-sm-2 control-label">
-                                                            Name
-                                                        </label>
-                                                        <div class="col-sm-10">
-                                                            <div class="row">
-                                                                <div class="col-md-3">
-                                                                    <select class="form-control">
-                                                                        <option>Mr.</option>
-                                                                        <option>Ms.</option>
-                                                                        <option>Mrs.</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-md-9">
-                                                                    <input type="text" class="form-control" placeholder="Name" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="email" class="col-sm-2 control-label">
-                                                            Email
-                                                        </label>
-                                                        <div class="col-sm-10">
-                                                            <input type="email" class="form-control" id="email" placeholder="Email" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="phone" class="col-sm-2 control-label">
-                                                            Phone
-                                                        </label>
-                                                        <div class="col-sm-10">
-                                                            <input type="email" class="form-control" id="phone" placeholder="Phone" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="password" class="col-sm-2 control-label">
-                                                            Password
-                                                        </label>
-                                                        <div class="col-sm-10">
-                                                            <input type="password" class="form-control" id="password" placeholder="Password" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-sm-2">
-                                                        </div>
-                                                        <div class="col-sm-10">
-                                                            <button type="button" class="btn btn-primary btn-sm">
-                                                                Save & Continue
-                                                            </button>
-                                                            <button type="button" class="btn btn-default btn-sm">
-                                                                Cancel
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
+                                    <p>Tu Ho Chi Minh</p>
+                                </div>
+                                <div class="row">
+                                    <strong>Ha Noi</strong>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">26/7/2020</div>
+                                    <div class="col-lg-4">----</div>
+                                    <div class="col-lg-4">28/7/2020</div>
+                                </div>
+                            </div>
+                            <div class="card-footer row">
+                                <div class="col-lg-8">
+                                    1.500.000
+                                </div>
+                                <div class="col-lg-4">
+                                    <a href="AirlineList"><button type="button" class="btn btn-primary">Show</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="col-lg-2">
+                                    <img src="https://www.abay.vn/Images/Icon/Flight/Airline/AirlineLogo/smVJ_Full.gif" alt=""
+                                         height="22px" style="margin-left:201px">
+                                </div>
+                                <div class="row">
+                                    <p>Tu Ho Chi Minh</p>
+                                </div>
+                                <div class="row">
+                                    <strong>Da Nang</strong>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">26/7/2020</div>
+                                    <div class="col-lg-4">----</div>
+                                    <div class="col-lg-4">28/7/2020</div>
+                                </div>
+                            </div>
+                            <div class="card-footer row">
+                                <div class="col-lg-8">
+                                    1.000.000
+                                </div>
+                                <div class="col-lg-4">
+                                    <a href="AirlineList"><button type="button" class="btn btn-primary">Show</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="col-lg-2">
+                                    <img src="https://www.abay.vn/Images/Icon/Flight/Airline/AirlineLogo/smVJ_Full.gif" alt=""
+                                         height="22px" style="margin-left:201px">
+                                </div>
+                                <div class="row">
+                                    <p>Tu Ho Chi Minh</p>
+                                </div>
+                                <div class="row">
+                                    <strong>Nha Trang</strong>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">28/7/2020</div>
+                                    <div class="col-lg-4">----</div>
+                                    <div class="col-lg-4">30/7/2020</div>
+                                </div>
+                            </div>
+                            <div class="card-footer row">
+                                <div class="col-lg-8">
+                                    1.000.000
+                                </div>
+                                <div class="col-lg-4">
+                                    <a href="AirlineList"><button type="button" class="btn btn-primary">Show</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="features">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="info">
+                                <div class="icon icon-info">
+                                    <img src="https://vietair.com.vn/Images/Desktop/Views/Home/Index/247.png">
+                                </div>
+                                <h4 class="info-title">Ho tro 24/7</h4>
+                                <p>Chỉ với một cú nhấp chuột, dễ dàng so sánh các chuyến bay giữa các hãng</p>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="info">
+                                <div class="icon icon-success">
+                                    <img src="https://vietair.com.vn/Images/Desktop/Views/Home/Index/100percent.png">
+                                </div>
+                                <h4 class="info-title">Gia ve tot nhat</h4>
+                                <p>Bay khắp mọi nơi với giá cực rẻ</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="info">
+                                <div class="icon icon-danger">
+                                    <img src="https://vietair.com.vn/Images/Desktop/Views/Home/Index/pay.png">
+                                </div>
+                                <h4 class="info-title">Thanh toan tien loi</h4>
+                                <p>Hệ thống đặt chỗ và thanh toán tiện lợi và uy tín</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="info">
+                                <div class="icon icon-danger">
+                                    <img src="https://vietair.com.vn/Images/Desktop/Views/Home/Index/bao-mat.png">
+                                </div>
+                                <h4 class="info-title">Chinh sach bao mat</h4>
+                                <p>Giá vé được đảm bảo theo thanh toán đã xác nhận, yêu cầu đặt chỗ được đảm bảo khi vé được xuất</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section text-center">
+                <h2 class="title">Uu dai ngay hom nay</h2>
+                <div id="carousel-example" class="carousel slide" data-ride="carousel">
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="col-item">
+                                        <div class="photo">
+                                            <img src="https://www2.gotadi.com//Upload/imgbanner/imgbanner260520200959105910.jpg" class="img-responsive" alt="a" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <div class="col-item">
+                                        <div class="photo">
+                                            <img src="https://www2.gotadi.com//Upload/imgbanner/imgbanner22052020110310310.jpg" class="img-responsive" alt="a" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <div class="col-item">
+                                        <div class="photo">
+                                            <img src="https://www2.gotadi.com//Upload/imgbanner/imgbanner130520200434203420.jpg" class="img-responsive" alt="a" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <div class="col-item">
+                                        <div class="photo">
+                                            <img src="https://www2.gotadi.com//Upload/imgbanner/imgbanner050520200225562556.jpg" class="img-responsive" alt="a" />
                                         </div>
                                     </div>
                                 </div>
@@ -177,388 +315,138 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-
-<hr>
-<div class="menu">
-    <ul>
-        <i class="fas fa-home home"></i>
-        <li><a href="/homepage">Trang chu</a></li>
-        <li><a href="/contactUs">Ve may bay</a></li>
-        <li><a href="/feedback">Thanh toan</a></li>
-        <li><a href="/aboutUs">ABOUT US</a></li>
-        <li><a href="/register">Dang ky</a></li>
-        <li><a href="/login">dang nhap</a></li>
-    </ul>
-</div>
-
-<div class="container-fluid">
-    <div>
-        <img src="https://static2.gotadi.com/web/images/banner-slider-1.jpg" class="d-block w-100" alt="..." height="600px">
-    </div>
-    <div class="h" style="margin-top:-382px;
-    margin-bottom: 100px;
-    margin-left: 100px;
-    color: white;
-    font-size: 18px;
-    font-family: cursive">
-        <div>
-            <h2>Dat ve may bay</h2>
-        </div>
-        <div class="row">
-            <div class="col-md-8">
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#motChieu" data-toggle="tab">Mot chieu</a></li>
-                    <li><a href="#khuHoi" data-toggle="tab">Khu hoi</a></li>
-                </ul>
-                <!-- Tab panes -->
-                <div class="tab-content">
-                    <div class="tab-pane active" id="motChieu">
-                        <form role="form" method="post" action="@Url.Action("SearchFlights", "Home")" class="form-horizontal">
-                            @*<div class="form-group">
-                                <label class="col-sm-2 control-label">
-                                    Hang
-                                </label>
-                                <div class="col-sm-10">
-                                    @Html.DropDownList("Airline.AirlineName",
-                                       null, "Chon hang",  // property to be used as text of dropdown item
-                                                    new { @class = "form-control" })
-                                </div>
-                            </div>*@
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">
-                                    Diem di
-                                </label>
-                                <div class="col-sm-10">
-                                    @Html.DropDownList("To",
-                                       null, "Chon diem di",  // property to be used as text of dropdown item
-                                                    new { @class = "form-control" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">
-                                    Diem den
-                                </label>
-                                <div class="col-sm-10">
-                                    @Html.DropDownList("From",
-                                     null, "Chon diem den",  // property to be used as text of dropdown item
-                                                  new { @class = "form-control" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">
-                                    Ngay di
-                                </label>
-                                <div class="col-sm-10">
-                                    <input type="date" name="DepartureDate" class="form-control" placeholder="Enter start date">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">
-                                    So luong
-                                </label>
-                                <div class="col-sm-10">
-                                    <input type="number" name="Amount" class="form-control" placeholder="Enter number ticket" min="1" step="1">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2">
-                                </div>
-                                <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-success">
-                                        Tim chuyen bay
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="tab-pane" id="khuHoi">
-                        <form role="form" class="form-horizontal">
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">
-                                    Diem di
-                                </label>
-                                <div class="col-sm-10">
-                                    @Html.DropDownList("To",
-                                      null, "Chon diem di",  // property to be used as text of dropdown item
-                                                   new { @class = "form-control" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">
-                                    Diem den
-                                </label>
-                                <div class="col-sm-10">
-                                    @Html.DropDownList("From",
-                                      null, "Chon diem den",  // property to be used as text of dropdown item
-                                                   new { @class = "form-control" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">
-                                    Ngay di
-                                </label>
-                                <div class="col-sm-10">
-                                    <input type="date" class="form-control" placeholder="E11dqaznter start date">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">
-                                    Ngay ve
-                                </label>
-                                <div class="col-sm-10">
-                                    <input type="date" class="form-control" placeholder="Enter end date">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">
-                                    So luong
-                                </label>
-                                <div class="col-sm-10">
-                                    <input type="number" class="form-control" placeholder="Enter number ticket" min="1" step="1">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2">
-                                </div>
-                                <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-success">Tim chuyen bay
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@if (Model != null)
-{
-    if (Model.Flights.Count > 0)
-    {
-        @Html.Partial("~/Views/Home/_partialView/_PartialFlights.cshtml", Model.Flights)
-    }
-}
-
-
-
-<div class="container mb-6">
-    <div class="row">
-        <div class="col-lg-4 col-sm-4">
-            <img src="https://static2.gotadi.com/web/icons/price.png"
-                 class="rounded-circle" alt="" width="100px" height="100px">
-            <h4><strong>Cam ket gia luon re</strong></h4>
-            <p style="text-align: center">Gia ve may bay va phong khach san trong nuoc va quoc te</p>
-        </div>
-        <div class="col-lg-4 col-sm-4">
-            <img src="https://static2.gotadi.com/web/icons/support.png"
-                 class="rounded-circle" alt="" width="100px" height="100px">
-            <h4><strong class="">Dich vu khach hang tan tinh</strong></h4>
-            <p style="text-align: center;margin-left: -80px">Tong dai ho tro va cham soc khach hang 24/7</p>
-        </div>
-        <div class="col-lg-4 col-sm-4">
-            <img src="https://static2.gotadi.com/web/icons/payment.png"
-                 class="rounded-circle" alt="" width="100px" height="100px">
-            <h4><strong>Da dang phuong thuc thanh toan</strong></h4>
-            <p style="text-align: center;margin-left: -107px">Thanh toan de dang, an toan tuyet doi</p>
-        </div>
-    </div>
-</div>
-<hr>
-<h2 style="text-align: center">Uu dai ngay hom nay</h2>
-<div id="carousel-example" class="carousel slide hidden-xs" data-ride="carousel">
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-        <div class="item active">
-            <div class="row">
-                <div class="col-sm-3">
-                    <div class="col-item">
-                        <div class="photo">
-                            <img src="https://www2.gotadi.com//Upload/imgbanner/imgbanner260520200959105910.jpg" class="img-responsive" alt="a" />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-3">
-                    <div class="col-item">
-                        <div class="photo">
-                            <img src="https://www2.gotadi.com//Upload/imgbanner/imgbanner22052020110310310.jpg" class="img-responsive" alt="a" />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-3">
-                    <div class="col-item">
-                        <div class="photo">
-                            <img src="https://www2.gotadi.com//Upload/imgbanner/imgbanner130520200434203420.jpg" class="img-responsive" alt="a" />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-3">
-                    <div class="col-item">
-                        <div class="photo">
-                            <img src="https://www2.gotadi.com//Upload/imgbanner/imgbanner050520200225562556.jpg" class="img-responsive" alt="a" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="container gift">
-    <div class="jumbotron" style="margin-top: 40px">
-        <div class="row">
-            <div class="col-lg-3">
-                <img src="https://www.gotadi.com/assets/images/member-gtd.svg" alt="">
-            </div>
-            <div class="col-lg-7">
-                <h2>Chi danh rieng cho thanh vien gotadi</h2>
-                <span>Quản lý giao dịch, lưu danh sách hành khách thường xuyên, thông báo nhắc nhở hành trình, hưởng nhiều ưu đãi độc quyền chỉ khi tham gia cùng chúng tôi.</span>
-            </div>
-            <div class="col-lg-1">
-                <button type="button" class="btn btn-success"><a href="Account/login">Dang ky</a></button>
-            </div>
-            <div class="col-lg-1">
-                <button type="button" class="btn btn-default">Dang nhap</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <h2 style="text-align: center">Diem den pho bien</h2>
-    <div class="row">
-        <div class="carousel slide hidden-xs" data-ride="carousel">
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-                <div class="item active">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="col-item">
-                                <div class="photo">
-                                    <img src="~/Assets/client/image_icon/Home/dalat.jpg" alt="a" style="height: 150px" />
-                                </div>
-                                <div class="info" style="padding: 10px;
+            <div class="container">
+                <h2 style="text-align: center">Diem den pho bien</h2>
+                <div class="row">
+                    <div class="carousel slide hidden-xs" data-ride="carousel">
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="col-item">
+                                            <div class="photo">
+                                                <img src="~/Assets/client/image_icon/Home/dalat.jpg" alt="a" style="height: 150px" />
+                                            </div>
+                                            <div class="info" style="padding: 10px;
                                                          border-radius: 0 0 5px 5px;
                                                          margin-top: 1px;">
-                                    <div class="row">
-                                        <div class="price col-md-6">
-                                            <h5>
-                                                Da Lat
-                                            </h5>
-                                            <h5 class="price-text-color">
-                                                $199.99
-                                            </h5>
-                                        </div>
+                                                <div class="row">
+                                                    <div class="price col-md-6">
+                                                        <h5>
+                                                            Da Lat
+                                                        </h5>
+                                                        <h5 class="price-text-color">
+                                                            $199.99
+                                                        </h5>
+                                                    </div>
 
-                                    </div>
-                                    <div class="separator clear-left row">
-                                        <p class="btn-add">
-                                            <i class="fa fa-shopping-cart"></i><a href="HomePage.html" class="hidden-sm">Add</a>
-                                        </p>
-                                        <p class="btn-details">
-                                            <i class="fa fa-list"></i><a href="List.html" class="hidden-sm">More</a>
-                                        </p>
-                                    </div>
-                                    <div class="clearfix">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="col-item">
-                                <div class="photo">
-                                    <img src="~/Assets/client/image_icon/Home/ninhbinh.jpg" alt="a" style="height: 150px" />
-                                </div>
-                                <div class="info" style="padding: 10px;
-    border-radius: 0 0 5px 5px;
-    margin-top: 1px;">
-                                    <div class="row">
-                                        <div class="price col-md-6">
-                                            <h5>
-                                                Ninh Binh
-                                            </h5>
-                                            <h5 class="price-text-color">
-                                                $199.99
-                                            </h5>
+                                                </div>
+                                                <div class="separator clear-left row">
+                                                    <p class="btn-add">
+                                                        <i class="fa fa-shopping-cart"></i><a href="https://www.paypal.com/cgi-bin/webscr" class="hidden-sm">Add</a>
+                                                    </p>
+                                                    <p class="btn-details">
+                                                        <i class="fa fa-list"></i><a href="AirlineList" class="hidden-sm">More</a>
+                                                    </p>
+                                                </div>
+                                                <div class="clearfix">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="separator clear-left row">
-                                        <p class="btn-add">
-                                            <i class="fa fa-shopping-cart"></i><a href="HomePage.html" class="hidden-sm">Add</a>
-                                        </p>
-                                        <p class="btn-details">
-                                            <i class="fa fa-list"></i><a href="List.html" class="hidden-sm">More</a>
-                                        </p>
-                                    </div>
-                                    <div class="clearfix">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="col-item">
-                                <div class="photo">
-                                    <img src="~/Assets/client/image_icon/Home/quynhon.jpg" alt="a" style="height: 150px" />
-                                </div>
-                                <div class="info" style="padding: 10px;
+                                    <div class="col-sm-3">
+                                        <div class="col-item">
+                                            <div class="photo">
+                                                <img src="~/Assets/client/image_icon/Home/ninhbinh.jpg" alt="a" style="height: 150px" />
+                                            </div>
+                                            <div class="info" style="padding: 10px;
     border-radius: 0 0 5px 5px;
     margin-top: 1px;">
-                                    <div class="row">
-                                        <div class="price col-md-6">
-                                            <h5>
-                                                Quy Nhon
-                                            </h5>
-                                            <h5 class="price-text-color">
-                                                $149.99
-                                            </h5>
+                                                <div class="row">
+                                                    <div class="price col-md-6">
+                                                        <h5>
+                                                            Ninh Binh
+                                                        </h5>
+                                                        <h5 class="price-text-color">
+                                                            $199.99
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                                <div class="separator clear-left row">
+                                                    <p class="btn-add">
+                                                        <i class="fa fa-shopping-cart"></i><a href="https://www.paypal.com/cgi-bin/webscr" class="hidden-sm">Add</a>
+                                                    </p>
+                                                    <p class="btn-details">
+                                                        <i class="fa fa-list"></i><a href="AirlineList" class="hidden-sm">More</a>
+                                                    </p>
+                                                </div>
+                                                <div class="clearfix">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="separator clear-left row">
-                                        <p class="btn-add">
-                                            <i class="fa fa-shopping-cart"></i><a href="HomePage.html" class="hidden-sm">Add</a>
-                                        </p>
-                                        <p class="btn-details">
-                                            <i class="fa fa-list"></i><a href="List.html" class="hidden-sm">More</a>
-                                        </p>
-                                    </div>
-                                    <div class="clearfix">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="col-item">
-                                <div class="photo">
-                                    <img src="~/Assets/client/image_icon/Home/sapa.jpg" alt="a" style="height: 150px;" />
-                                </div>
-                                <div class="info" style="padding: 10px;
+                                    <div class="col-sm-3">
+                                        <div class="col-item">
+                                            <div class="photo">
+                                                <img src="~/Assets/client/image_icon/Home/quynhon.jpg" alt="a" style="height: 150px" />
+                                            </div>
+                                            <div class="info" style="padding: 10px;
     border-radius: 0 0 5px 5px;
     margin-top: 1px;">
-                                    <div class="row">
-                                        <div class="price col-lg-6">
-                                            <h5>
-                                                Sapa
-                                            </h5>
-                                            <h5 class="price-text-color">
-                                                $199.99
-                                            </h5>
+                                                <div class="row">
+                                                    <div class="price col-md-6">
+                                                        <h5>
+                                                            Quy Nhon
+                                                        </h5>
+                                                        <h5 class="price-text-color">
+                                                            $149.99
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                                <div class="separator clear-left row">
+                                                    <p class="btn-add">
+                                                        <i class="fa fa-shopping-cart"></i><a href="https://www.paypal.com/cgi-bin/webscr" class="hidden-sm">Add</a>
+                                                    </p>
+                                                    <p class="btn-details">
+                                                        <i class="fa fa-list"></i><a href="AirlineList" class="hidden-sm">More</a>
+                                                    </p>
+                                                </div>
+                                                <div class="clearfix">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="separator clear-left row">
-                                        <p class="btn-add">
-                                            <i class="fa fa-shopping-cart"></i><a href="HomePage.html" class="hidden-sm">Add</a>
-                                        </p>
-                                        <p class="btn-details">
-                                            <i class="fa fa-list"></i><a href="List.html" class="hidden-sm">More</a>
-                                        </p>
-                                    </div>
-                                    <div class="clearfix">
+                                    <div class="col-sm-3">
+                                        <div class="col-item">
+                                            <div class="photo">
+                                                <img src="~/Assets/client/image_icon/Home/sapa.jpg" alt="a" style="height: 150px;" />
+                                            </div>
+                                            <div class="info" style="padding: 10px;
+    border-radius: 0 0 5px 5px;
+    margin-top: 1px;">
+                                                <div class="row">
+                                                    <div class="price col-lg-6">
+                                                        <h5>
+                                                            Sapa
+                                                        </h5>
+                                                        <h5 class="price-text-color">
+                                                            $199.99
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                                <div class="separator clear-left row">
+                                                    <p class="btn-add">
+                                                        <i class="fa fa-shopping-cart"></i><a href="https://www.paypal.com/cgi-bin/webscr" class="hidden-sm">Add</a>
+                                                    </p>
+                                                    <p class="btn-details">
+                                                        <i class="fa fa-list"></i><a href="AirlineList" class="hidden-sm">More</a>
+                                                    </p>
+                                                </div>
+                                                <div class="clearfix">
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -566,50 +454,108 @@
                     </div>
                 </div>
             </div>
+            <div class="container gift">
+                <div class="jumbotron">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <img src="https://www.gotadi.com/assets/images/member-gtd.svg" alt="">
+                        </div>
+                        <div class="col-lg-7">
+                            <h2>Chi danh rieng cho thanh vien AR</h2>
+                            <span>Quản lý giao dịch, lưu danh sách hành khách thường xuyên, thông báo nhắc nhở hành trình, hưởng nhiều ưu đãi độc quyền chỉ khi tham gia cùng chúng tôi.</span>
+                        </div>
+                        <div class="col-lg-1">
+                            <button type="button" class="btn btn-success">Dang ky</a></button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="jumbotron">
+                    <h4>Tìm và mua vé máy bay giá rẻ trên Etrip4u.com</h4>
+                    <span>
+                        Etrip4u.com nỗ lực hết mình để hỗ trợ quý khách tìm được những lựa chọn vé máy bay tốt
+                        nhất, hệ thống tổng hợp vé máy bay khuyến mại của tất cả các hãng hàng không tới các địa
+                        điểm trên khắp Thế Giới.
+                    </span> </br>
+                    </br>
+                    <h4>Ưu đãi chuyến bay giá rẻ với etrip4u.com trên toàn Thế Giới</h4>
+                    <span>
+                        Etrip4u hợp tác chặt chẽ với các hãng hàng không lớn trên khắp mọi Châu lục.
+                        Mua vé máy bay thật dễ dàng với Etrip4u.com.
+                    </span>
+                </div>
+            </div>
+            <div class="section section-contacts">
+                <div class="row">
+                    <div class="col-md-8 ml-auto mr-auto">
+                        <h2 class="text-center title">Work with us</h2>
+                        <h4 class="text-center description">Divide details about your product or agency work into parts. Write a few lines about each one and contact us about any further collaboration. We will responde get back to you in a couple of hours.</h4>
+                        <form class="contact-form">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Your Name</label>
+                                        <input type="email" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Your Email</label>
+                                        <input type="email" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleMessage" class="bmd-label-floating">Your Message</label>
+                                <textarea type="email" class="form-control" rows="4" id="exampleMessage"></textarea>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 ml-auto mr-auto text-center">
+                                    <button class="btn btn-primary btn-raised">
+                                        Send Message
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+    <footer class="footer footer-default">
+        <div class="container">
+            <nav class="float-left">
+                <ul>
 
-<hr>
-<!-- Footer -->
-<footer class="">
+                    <li>
+                        <a href="https://www.creative-tim.com/presentation">
+                            About Us
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.creative-tim.com/blog">
+                            Contact us
+                        </a>
+                    </li>
 
-    <hr>
+                </ul>
+            </nav>
+            <div class="copyright float-right">
+                &copy;
+                <script>
+                    document.write(new Date().getFullYear())
+                </script>, made with by
+                <a href="https://www.creative-tim.com/" target="_blank">T1811E</a>
+            </div>
+        </div>
+    </footer>
+    <noscript>
+        <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=111649226022273&ev=PageView&noscript=1" />
+    </noscript>
+</body>
 
-    <!-- Social buttons -->
-    <ul class="list-unstyled list-inline text-center">
-        <li class="list-inline-item">
-            <a class="btn-floating btn-fb mx-1">
-                <i class="fab fa-facebook-f"> </i>
-            </a>
-        </li>
-        <li class="list-inline-item">
-            <a class="btn-floating btn-tw mx-1">
-                <i class="fab fa-twitter"> </i>
-            </a>
-        </li>
-        <li class="list-inline-item">
-            <a class="btn-floating btn-gplus mx-1">
-                <i class="fab fa-google-plus-g"> </i>
-            </a>
-        </li>
-        <li class="list-inline-item">
-            <a class="btn-floating btn-li mx-1">
-                <i class="fab fa-linkedin-in"> </i>
-            </a>
-        </li>
-        <li class="list-inline-item">
-            <a class="btn-floating btn-dribbble mx-1">
-                <i class="fab fa-dribbble"> </i>
-            </a>
-        </li>
-    </ul>
-    <!-- Social buttons -->
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">
-        © 2020 Copyright:
-        <a href="https://mdbootstrap.com/"> T1811E</a>
-    </div>
-    <!-- Copyright -->
+</html>
 
-</footer>
