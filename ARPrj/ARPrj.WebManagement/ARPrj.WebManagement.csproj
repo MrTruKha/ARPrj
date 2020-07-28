@@ -2245,6 +2245,7 @@
     <Content Include="Assets\admin\vendors\themify-icons\ie7\ie7.js" />
     <Content Include="Assets\client\css\a.css" />
     <Content Include="Assets\client\css\booking.css" />
+    <Content Include="Assets\client\css\footer.css" />
     <Content Include="Assets\client\css\Home.css" />
     <Content Include="Assets\client\css\layout.css" />
     <Content Include="Assets\client\css\login.css" />
